@@ -23,6 +23,8 @@ A few groups need a sentence of context:
 - MCP rows are programs. The protocol itself is not a row.
 - The terminal tools are how DHH watches agents. The model rows are weights he says he runs, not harnesses.
 - Desktop chat apps are the Omarchy Install, AI menu. Claude, Hermes, Herdr, Amp, T3 Code, and OpenClaw are already rows above.
+- AI code review is the pull-request reviewer, separate from the coding agent that writes the change. GitHub Copilot code review is that review surface, not the Copilot CLI row.
+- Nightwatch is Hugging Face's paid Enterprise add-on that watches Hub activity. The docs spell it as one word.
 
 <style>
 form.oi-3a86ea-table td {

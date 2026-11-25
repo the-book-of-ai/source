@@ -178,3 +178,22 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | [gputaskman](https://github.com/shanselman/gputaskman) | GPU monitor | MIT | CLI | Per-process VRAM and LLM buffer breakdown on Windows, Linux, WSL, and macOS | README calls it early experimental software; model breakdowns are estimates | Issue #23. Release v0.4.5 is dated 21 Nov 2026 |
 | [ArtCraft Launcher](https://github.com/storytold/craft-launcher) | App launcher | Apache-2.0 | Desktop | Installs and opens the Craft app suite. Stable release v0.20.1 on 25 Nov 2026 | A creative-suite launcher, not a coding agent | Issue #22. The issue link is the older tag v0.19.2. Site: [getartcraft.com](https://getartcraft.com/) |
+
+## AI code review
+
+| Tool | Category | License | Platform | Strength | Limitation | Note |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Greptile](https://www.greptile.com/) | AI code review | Proprietary | SaaS, Self-hosted | Reviews pull requests on GitHub, GitLab, Bitbucket, and other hosts using codebase context | Self-hosting requires an Enterprise license; cloud reviews spend credits | Docs: https://www.greptile.com/docs/quickstart . No public source repo found at greptileai/greptile |
+| [CodeRabbit](https://www.coderabbit.ai/) | AI code review | Proprietary | SaaS, Self-hosted | GitHub App that reviews pull requests; the marketplace says public repositories are free | Terms call the service proprietary and reserve the product IP. A separate skills repo is MIT and is not this product | Terms: https://tos.coderabbit.ai/ . Marketplace: https://github.com/marketplace/coderabbitai |
+| [Graphite Agent](https://graphite.com/docs/ai-reviews) | AI code review | Not stated | SaaS | Automatically reviews new pull requests and posts a comment with a suggested fix | Docs do not name a source license. A pull request over 200,000 characters is not analyzed | A June 2025 Graphite status incident still names Diamond as the AI code reviewer: https://status.graphite.com/cmbtsj3sp009i14elpd3zj1v0 |
+| [PR-Agent](https://github.com/The-PR-Agent/pr-agent) | AI code review | MIT | Self-hosted | Community-maintained open-source pull-request reviewer, pushed 25 Nov 2026 | README says this is not Qodo's hosted review product | Docs: https://www.pr-agent.ai |
+| [Qodo](https://www.qodo.ai/ai-code-review-platform/) | AI code review | Proprietary | SaaS, Self-hosted | Reviews pull requests inside Git; Qodo Merge was folded into this platform | Business terms license the hosted platform for internal use. Enterprise pricing lists on-prem and air-gapped installs | Former name: https://www.qodo.ai/formerly-qodo-merge/ . Terms: https://www.qodo.ai/business-terms-of-service/ |
+| [Cursor Bugbot](https://cursor.com/docs/bugbot) | AI code review | Proprietary | SaaS | Reviews pull-request diffs on GitHub, GitLab, Bitbucket, Azure DevOps, and Origin, and posts fix suggestions | Skips a pull request over its size limit. Docs do not publish a source license | The cursor/cursor repository lists no license |
+| [GitHub Copilot code review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-code-review) | AI code review | Proprietary | SaaS | Reviews a GitHub pull request and can suggest changes you apply in the pull request | Automatic review depends on the Copilot plan. A default review is a comment, not an approval | Distinct from the Copilot CLI row |
+| [Sourcery](https://github.com/sourcery-ai/sourcery) | AI code review | MIT | SaaS | GitHub App that reviews a pull request with a summary and line comments | Getting started is the hosted GitHub App. The README does not describe a self-hosted server | Install: https://github.com/apps/sourcery-ai/installations/new . Repo pushed 10 Nov 2026 |
+
+## Agent security
+
+| Tool | Category | License | Platform | Strength | Limitation | Note |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Nightwatch](https://huggingface.co/docs/hub/en/enterprise-nightwatch) | Agent security | Proprietary | SaaS | Security agent scans Hugging Face Hub activity logs in real time and alerts Slack or an incident system | Paid Enterprise add-on only. The docs do not publish a source license or a price | Official Hub docs. No huggingface GitHub repo named nightwatch |

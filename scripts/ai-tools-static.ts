@@ -58,7 +58,7 @@ if (previous !== output) {
 }
 
 function escapeCell(value: string): string {
-  return value.replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
+  return value.replace(/\\/g, "\\\\").replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
 }
 
 function parseCsv(input: string): string[][] {

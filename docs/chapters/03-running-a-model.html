@@ -573,7 +573,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="general-purpose-local-inference" class="level4" data-number="3.4.1.2">
 <h4 data-number="3.4.1.2" class="anchored" data-anchor-id="general-purpose-local-inference"><span class="header-section-number">3.4.1.2</span> General-Purpose / Local Inference</h4>
 <ul>
-<li><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> — Core C/C++ inference engine (GGUF, CPU + GPU, maximum control)</li>
+<li><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> — Core C/C++ inference engine (GGUF, CPU + GPU, maximum control). For MoE models, <code>--n-cpu-moe N</code> keeps the expert weights of the first N layers in system RAM, and <code>-ot</code> / <code>--override-tensor</code> is the same placement as a tensor pattern. With the rest of the model offloaded, attention and shared layers stay on the GPU. That split is what lets a 100B-class MoE such as gpt-oss-120b run on a 12–24 GB GPU when the machine has plenty of RAM: <code>llama-server -hf ggml-org/gpt-oss-120b-GGUF --jinja --n-cpu-moe 32</code>.</li>
 <li><a href="https://github.com/huggingface/transformers">Hugging Face Transformers</a> — Reference Python library; runs almost any model, slower but universal</li>
 <li><a href="https://github.com/ml-explore/mlx-lm">MLX / mlx-lm</a> — Apple’s framework for fast native inference on Apple Silicon</li>
 <li><a href="https://github.com/ashhart/TensorFold">TensorFold</a> — A high-performance native inference engine written in Zig. Similar to llama.cpp, it bypasses Python entirely to run Metal (Apple Silicon), CUDA (NVIDIA), and Vulkan kernels directly on the hardware.</li>
@@ -586,6 +586,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://github.com/microsoft/onnxruntime-genai">ONNX Runtime GenAI</a> — Microsoft’s cross-platform engine (Windows, DirectML, NPUs)</li>
 <li><a href="https://github.com/turboderp-org/exllamav3">ExLlamaV3</a> — Fast quantized (EXL3) inference on consumer NVIDIA GPUs</li>
 <li><a href="https://github.com/ikawrakow/ik_llama.cpp">ik_llama.cpp</a> — llama.cpp fork with faster CPU and hybrid CPU/GPU inference and newer quant types</li>
+<li><a href="https://github.com/kvcache-ai/ktransformers">KTransformers</a> — Niche CPU/GPU engine for MoE offload on a Xeon-class CPU plus a GPU. Attention stays on the GPU; expert weights run from system RAM on AMX/AVX kernels, with hot experts optionally kept on the GPU. The native Windows install is temporarily deprecated in favor of WSL.</li>
 <li><a href="https://github.com/niko1221/strata">Strata</a> — A highly specialized inference engine (incorporating parts of llama.cpp) designed strictly to run massive 100B+ parameter Mixture-of-Experts (MoE) models on standard consumer hardware. It uses “expert streaming” to keep frequently used neural network experts in GPU VRAM while rapidly fetching the remaining experts from system RAM and NVMe SSDs.</li>
 <li><a href="https://github.com/jesdga95/basalt">Basalt</a> — NVIDIA Blackwell-optimized local inference engine forked from <a href="https://github.com/niko1221/strata">Strata</a> for selected models, with system-RAM offload and compatible APIs.</li>
 <li><a href="https://github.com/warpfront/hipfire">hipfire</a> — is an inference engine for AMD GPUs. It ships its own Rust runtime, model implementations, quantization formats (MQ3–MQ6, MQ4R, MFP4), typed kernel dispatch and HIP kernels.</li>
@@ -596,6 +597,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="runners"><span class="header-section-number">3.4.2</span> Runners</h3>
 <ul>
 <li><a href="https://ollama.com">Ollama</a> — CLI + local OpenAI-compatible API (most popular for developers)</li>
+<li><a href="https://github.com/containers/ramalama">RamaLama</a> — Container-native runner (Podman or Docker) with an OpenAI-compatible API; llama.cpp by default, and vLLM</li>
 <li><a href="https://github.com/LostRuins/koboldcpp">KoboldCpp</a> — Easy single-binary runner with built-in UI</li>
 <li><a href="https://jan.ai/">Jan</a> — Fully open-source run models locally, with cloud integration, MCP support. desktop app (privacy-focused)</li>
 <li><a href="https://lmstudio.ai/">LM Studio</a> — Polished desktop GUI</li>
@@ -613,7 +615,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="notes" class="level5" data-number="3.4.3.0.1">
 <h5 data-number="3.4.3.0.1" class="anchored" data-anchor-id="notes"><span class="header-section-number">3.4.3.0.1</span> Notes</h5>
 <ul>
-<li><a href="https://github.com/niko1221/strata">Strata</a>: Unlike general-purpose engines like llama.cpp or runners like Ollama that aim to support thousands of different open-source models, Strata deliberately sacrifices broad compatibility. It is heavily optimized for a very small roster of massive, sparse MoE models (primarily Qwen3.8-Flash-Next and DeepSeek V4.1). You generally do not use Strata to run a standard 8B or 14B parameter model. You use it specifically when you want to force a 125-billion parameter model to run efficiently at dozens of tokens per second on a 12GB to 24GB gaming GPU, bypassing the need for an expensive dedicated server.</li>
+<li><a href="https://github.com/niko1221/strata">Strata</a>: Unlike general-purpose engines like llama.cpp or runners like Ollama that aim to support thousands of different open-source models, Strata deliberately sacrifices broad compatibility. It is heavily optimized for a very small roster of sparse MoE models. As of 0.2.21 (24 Nov 2026) that roster is Qwen3.8-Flash-Next, Qwen3.6-35B-A3B, Tencent Hy4-Flash, and Inkling 2 Mini. DeepSeek V4.1-Flash support ended after 0.2.13, the last release that set it up and started it. Strata does not run gpt-oss. You generally do not use Strata to run a standard 8B or 14B parameter model. You use it specifically when you want to force a 125-billion parameter model to run efficiently at dozens of tokens per second on a 12GB to 24GB gaming GPU, bypassing the need for an expensive dedicated server.</li>
 <li><a href="https://github.com/ashhart/TensorFold">TensorFold</a>: aims for bare-metal efficiency, portability, and ease of use, but achieves it through a modern Zig codebase rather than C/C++. It is highly optimized for Apple Silicon and NVIDIA GPUs (including DGX Spark systems), accelerating local inference by removing heavy ML dependencies and orchestrating the entire stack—from kernel execution to API serving—inside one executable.</li>
 </ul>
 </section>
@@ -703,7 +705,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td><strong>Best hardware edge</strong></td>
-<td>Broadest support (CPU, Metal, CUDA, ROCm, Vulkan, etc.)</td>
+<td>Broadest support (CPU, Metal, CUDA, ROCm, Vulkan); MoE experts in RAM (<code>--n-cpu-moe</code>) so 100B-class models fit 12–24 GB GPUs</td>
 <td>Lower overhead; strong on NVIDIA &amp; Apple Silicon</td>
 <td>Strong MLX performance on Apple Silicon</td>
 <td>llama.cpp + MLX; good cross-platform</td>
@@ -725,7 +727,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td><strong>Extras / Strengths</strong></td>
-<td>Maximum control, quantizations (GGUF), minimal deps, hybrid CPU+GPU</td>
+<td>Maximum control, quantizations (GGUF), minimal deps, hybrid CPU+GPU, expert offload (<code>--n-cpu-moe</code>, <code>-ot</code> / <code>--override-tensor</code>)</td>
 <td>Excellent ecosystem, Modelfiles, Docker, optional cloud</td>
 <td>Document chat (RAG), MCP client, continuous batching, remote sharing</td>
 <td>MCP support, agents, cloud model integration, privacy focus</td>

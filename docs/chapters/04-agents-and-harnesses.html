@@ -72,9 +72,10 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-804ff48c6a59df9ad4519b55f4b8adc8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f8f43a95473fd713a4fc6b1579e33071.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-804ff48c6a59df9ad4519b55f4b8adc8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a47d45f0237b0d07620a0a60e1ec72e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fcd7dbf3c84a34a1774f3f33ceb6d139.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a47d45f0237b0d07620a0a60e1ec72e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/glossary/glossary.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -466,11 +467,13 @@ div.csl-indent {
   <li><a href="#more-precise-breakdown" id="toc-more-precise-breakdown" class="nav-link" data-scroll-target="#more-precise-breakdown"><span class="header-section-number">4.1.1</span> More precise breakdown</a></li>
   </ul></li>
   <li><a href="#modern-harnesses" id="toc-modern-harnesses" class="nav-link" data-scroll-target="#modern-harnesses"><span class="header-section-number">4.2</span> Modern harnesses</a></li>
-  <li><a href="#supporting-infrastructure" id="toc-supporting-infrastructure" class="nav-link" data-scroll-target="#supporting-infrastructure"><span class="header-section-number">4.3</span> Supporting infrastructure</a></li>
-  <li><a href="#agents.md" id="toc-agents.md" class="nav-link" data-scroll-target="#agents.md"><span class="header-section-number">4.4</span> agents.md</a></li>
-  <li><a href="#enterprise-level-agentic-engineering" id="toc-enterprise-level-agentic-engineering" class="nav-link" data-scroll-target="#enterprise-level-agentic-engineering"><span class="header-section-number">4.5</span> Enterprise-level agentic engineering</a>
+  <li><a href="#agentic-development-environments" id="toc-agentic-development-environments" class="nav-link" data-scroll-target="#agentic-development-environments"><span class="header-section-number">4.3</span> Agentic development environments</a></li>
+  <li><a href="#agent-orchestration" id="toc-agent-orchestration" class="nav-link" data-scroll-target="#agent-orchestration"><span class="header-section-number">4.4</span> Agent orchestration</a></li>
+  <li><a href="#supporting-infrastructure" id="toc-supporting-infrastructure" class="nav-link" data-scroll-target="#supporting-infrastructure"><span class="header-section-number">4.5</span> Supporting infrastructure</a></li>
+  <li><a href="#agents.md" id="toc-agents.md" class="nav-link" data-scroll-target="#agents.md"><span class="header-section-number">4.6</span> agents.md</a></li>
+  <li><a href="#enterprise-level-agentic-engineering" id="toc-enterprise-level-agentic-engineering" class="nav-link" data-scroll-target="#enterprise-level-agentic-engineering"><span class="header-section-number">4.7</span> Enterprise-level agentic engineering</a>
   <ul class="collapse">
-  <li><a href="#kortix-companyos" id="toc-kortix-companyos" class="nav-link" data-scroll-target="#kortix-companyos"><span class="header-section-number">4.5.1</span> Kortix CompanyOS</a></li>
+  <li><a href="#kortix-companyos" id="toc-kortix-companyos" class="nav-link" data-scroll-target="#kortix-companyos"><span class="header-section-number">4.7.1</span> Kortix CompanyOS</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/chapters/04-agents-and-harnesses.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -652,22 +655,215 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>Compare harnesses by their philosophy, strengths, limitations, deployment style, and fit for the task.</p>
+<p>Compare harnesses by their philosophy, strengths, limitations, deployment style, and fit for the task. The tables below compare coding environments and multi-agent coordination. General harnesses such as Hermes, OpenClaw, goose, and Agent Zero stay in the table above.</p>
 </section>
-<section id="supporting-infrastructure" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="supporting-infrastructure"><span class="header-section-number">4.3</span> Supporting infrastructure</h2>
+<section id="agentic-development-environments" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="agentic-development-environments"><span class="header-section-number">4.3</span> Agentic development environments</h2>
+<p>An <a href="https://davidgeeraerts.github.io/AI/appendices/glossary.html#ade-agentic-development-environment"><button class="glossary" title="is the editor, IDE, or terminal where a developer works with a coding agent. The harness is built around a repository: the agent reads the project, uses tools, and proposes changes, and the developer reviews them in place. OpenCode, Claude Code, Codex, Cline, Cursor, and Zed are ADEs. A general harness such as goose or Hermes can write code too; an ADE is organized around the editor and the repository. See also: Harness, Agent orchestration.">(ADE) Agentic Development Environment</button></a> is the editor, IDE, or terminal where a developer works with a coding agent. The harness is built around a repository: the agent reads the project, calls tools, and proposes changes, and the developer reviews them in place. OpenCode, OpenHands, Codex, Claude Code, Cline, and Aider are the coding harnesses this book already tracks. Cursor, Devin Desktop, Zed, and Kiro are the other environments in wide use that fit the same slot.</p>
+<p>Cells were checked against each project’s repository or docs in November 2026. The license column names the client or library.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Type</th>
+<th>License</th>
+<th>Local models</th>
+<th>Multi-agent</th>
+<th>Strength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://opencode.ai/"><strong>OpenCode</strong></a></td>
+<td>Terminal, desktop, IDE</td>
+<td>MIT</td>
+<td>Ollama, LM Studio, and vLLM</td>
+<td>Primary agents plus subagents (<code>build</code>, <code>plan</code>, <code>general</code>, <code>explore</code>)</td>
+<td>Model-agnostic coding agent across terminal and editor</td>
+</tr>
+<tr class="even">
+<td><a href="https://openhands.dev/"><strong>OpenHands</strong></a></td>
+<td>Local control center</td>
+<td>MIT</td>
+<td>Any LLM you configure. The app runs on your machine by default</td>
+<td>Its own agent plus other agents over ACP, across local, remote, and cloud backends</td>
+<td>Self-hosted canvas for several coding agents</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/openai/codex"><strong>Codex</strong></a></td>
+<td>CLI, IDE, cloud</td>
+<td>Apache-2.0 (CLI source)</td>
+<td>CLI: Ollama or LM Studio via <code>--oss</code>, or another Responses API server</td>
+<td>Subagents, enabled by default in the CLI</td>
+<td>Open terminal agent; the IDE extension shares its config</td>
+</tr>
+<tr class="even">
+<td><a href="https://code.claude.com/"><strong>Claude Code</strong></a></td>
+<td>CLI and IDE</td>
+<td>Proprietary (Anthropic terms)</td>
+<td>Claude models. Routing to non-Claude models is unsupported</td>
+<td>Subagents, background sessions, and agent teams</td>
+<td>Anthropic’s coding harness: permissions, hooks, and skills</td>
+</tr>
+<tr class="odd">
+<td><a href="https://cline.bot/"><strong>Cline</strong></a></td>
+<td>Extension, CLI, desktop</td>
+<td>Apache-2.0</td>
+<td>Ollama, LM Studio, or an OpenAI-compatible local server</td>
+<td>Subagents in the CLI and desktop app. The VS Code and JetBrains extensions do not use them</td>
+<td>Open coding agent in the editor, the CLI, and a desktop app</td>
+</tr>
+<tr class="even">
+<td><a href="https://aider.chat/"><strong>Aider</strong></a></td>
+<td>Terminal</td>
+<td>Apache-2.0</td>
+<td>Local models, including Ollama</td>
+<td>Single agent</td>
+<td>Pair programming in the terminal</td>
+</tr>
+<tr class="odd">
+<td><a href="https://cursor.com/"><strong>Cursor</strong></a></td>
+<td>IDE, CLI, cloud</td>
+<td>Proprietary</td>
+<td>Hosted models. An OpenAI API key covers local Chat and Agent only</td>
+<td>Built-in and custom subagents, including parallel runs</td>
+<td>Editor-native agent with cloud agents on the same product</td>
+</tr>
+<tr class="even">
+<td><a href="https://devin.ai/"><strong>Devin Desktop</strong></a> (formerly Windsurf)</td>
+<td>IDE</td>
+<td>Proprietary</td>
+<td>Hosted Cognition and provider models</td>
+<td>Devin Local subagents; a command center for local, cloud, and ACP agents</td>
+<td>Windsurf’s editor, renamed 2 June 2026, as an agent command center</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/RooCodeInc/Roo-Code"><strong>Roo Code</strong></a></td>
+<td>Editor extension</td>
+<td>Apache-2.0 (archived)</td>
+<td>Not restated in the shutdown README</td>
+<td>Custom modes in one session (Code, Architect, Ask, Debug)</td>
+<td>Shut down 15 May 2026. The README points to Zoo Code and Cline</td>
+</tr>
+<tr class="even">
+<td><a href="https://zed.dev/"><strong>Zed</strong></a></td>
+<td>Editor</td>
+<td>GPL-3.0-or-later (Apache-2.0 where marked)</td>
+<td>Ollama, LM Studio, llama.cpp, or a local OpenAI-compatible server</td>
+<td>Built-in agent; other agents connect over ACP</td>
+<td>Open editor with a local agent and guest agents</td>
+</tr>
+<tr class="odd">
+<td><a href="https://kiro.dev/"><strong>Kiro</strong></a></td>
+<td>IDE, VS Code, CLI, web, mobile</td>
+<td>Proprietary (AWS Customer Agreement)</td>
+<td>Hosted catalog, including hosted open-weight models. No on-machine runtime is documented</td>
+<td>Custom agents and sub-agents for parallel tasks</td>
+<td>One harness across every surface, with specs, steering, and hooks</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://github.com/RooCodeInc/Roo-Code">Roo Code</a>’s README says the extension shut down on 15 May 2026 and names <a href="https://github.com/Zoo-Code-Org/Zoo-Code">Zoo Code</a> (Apache-2.0, a community fork) and Cline as the places to go next.</p>
+</section>
+<section id="agent-orchestration" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="agent-orchestration"><span class="header-section-number">4.4</span> Agent orchestration</h2>
+<p><a href="https://davidgeeraerts.github.io/AI/appendices/glossary.html#agent-orchestration"><button class="glossary" title="is the layer that coordinates more than one agent on a shared task. It assigns work, passes state, and decides whether agents run in parallel, in sequence, or under a supervisor. LangGraph, CrewAI, and AG2 are orchestration libraries. SpyNEL is an orchestrator that drives coding harnesses you already run. A multi-agent system is the architecture; orchestration is the control over that architecture. See also: Multi-agent system, Sub-agent, (ADE) Agentic Development Environment.">Agent orchestration</button></a> is the layer that coordinates more than one agent on one task. A <a href="https://davidgeeraerts.github.io/AI/appendices/glossary.html#multi-agent-system">multi-agent system</a> is the architecture. The orchestrator assigns work, passes state, and decides whether agents run in parallel, in sequence, or under a supervisor. A <a href="https://davidgeeraerts.github.io/AI/appendices/glossary.html#sub-agent">sub-agent</a> is the narrow worker that pattern usually spawns.</p>
+<p>Libraries such as LangGraph, CrewAI, AG2, the OpenAI Agents SDK, and the Claude Agent SDK are how you build that coordination yourself. <a href="https://github.com/agent0ai/spynel">SpyNEL</a>, <a href="https://kortix.com/">Kortix</a>, and <a href="https://github.com/eigent-ai/eigent">Eigent</a> are the coordinators this book already names: SpyNEL drives harnesses you already run, Kortix runs company work from a git repo, and Eigent is a desktop workforce.</p>
+<p>The same November 2026 check applies here. Microsoft’s <a href="https://github.com/microsoft/autogen">AutoGen</a> repository is archived. Its code license is MIT (<code>LICENSE-CODE</code>) and its docs are CC-BY-4.0. The archived README sends new users to Microsoft Agent Framework. The upstream <code>microsoft/agent-framework</code> repository did not resolve when this table was written, so the row for that lineage is <a href="https://github.com/ag2ai/ag2">AG2</a>, the active project that still carries the AutoGen name.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Type</th>
+<th>License</th>
+<th>Local models</th>
+<th>Multi-agent</th>
+<th>Strength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://docs.langchain.com/oss/python/langgraph/"><strong>LangGraph</strong></a></td>
+<td>Library (Python and JavaScript)</td>
+<td>MIT</td>
+<td>None bundled. You supply the model client</td>
+<td>Agents are nodes in a stateful graph. Deep Agents, built on LangGraph, adds subagents</td>
+<td>Durable execution, checkpoints, and human interrupts</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.crewai.com/"><strong>CrewAI</strong></a></td>
+<td>Library (Python)</td>
+<td>MIT</td>
+<td>Ollama and other providers through LiteLLM</td>
+<td>Role-based crews, and Flows for event-driven branching</td>
+<td>A short path from roles to a crew</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/ag2ai/ag2"><strong>AG2</strong></a> (formerly AutoGen)</td>
+<td>Library (Python)</td>
+<td>Apache-2.0</td>
+<td><code>OllamaConfig</code>, or any OpenAI-compatible server (vLLM, LM Studio)</td>
+<td>Agents cooperate through a hub and typed channels</td>
+<td>Maintained line of the AutoGen idea</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/openai/openai-agents-python"><strong>OpenAI Agents SDK</strong></a></td>
+<td>Library (Python and JavaScript)</td>
+<td>MIT</td>
+<td>OpenAI APIs, or any OpenAI-compatible endpoint</td>
+<td>Handoffs and agents used as tools</td>
+<td>Small surface: agents, guardrails, sessions, tracing</td>
+</tr>
+<tr class="odd">
+<td><a href="https://platform.claude.com/docs/en/agent-sdk/overview"><strong>Claude Agent SDK</strong></a></td>
+<td>Library (Python and TypeScript)</td>
+<td>Anthropic Commercial Terms (Python package is MIT)</td>
+<td>Claude models, same constraint as Claude Code</td>
+<td>Subagents, hooks, and skills from Claude Code</td>
+<td>Claude Code’s loop as a library you run</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/agent0ai/spynel"><strong>SpyNEL</strong></a></td>
+<td>Orchestrator</td>
+<td>MIT</td>
+<td>No model of its own. Model support is the harness you attach</td>
+<td>One chat drives many Codex, Claude Code, and other harness sessions</td>
+<td>Reuses existing coding harnesses; task state stays in Markdown</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/kortix-ai/CompanyOS"><strong>Kortix CompanyOS</strong></a></td>
+<td>Company harness</td>
+<td>Elastic License 2.0</td>
+<td>Any model, in Kortix’s cloud or yours</td>
+<td>A fleet of agents for ongoing company work</td>
+<td>Skills, memory, and connectors in one git repo</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/eigent-ai/eigent"><strong>Eigent</strong></a></td>
+<td>Desktop</td>
+<td>Apache-2.0</td>
+<td>Local deployment; any model you choose</td>
+<td>A parallel workforce, or one meta agent</td>
+<td>Desktop multi-agent workforce built on CAMEL</td>
+</tr>
+</tbody>
+</table>
+<p>LangGraph does not pick a model or an agent shape. CrewAI’s Ollama path is documented as a LiteLLM provider. The Claude Agent SDK overview says use of the SDK is governed by Anthropic’s Commercial Terms, including when a component’s own file says MIT.</p>
+</section>
+<section id="supporting-infrastructure" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="supporting-infrastructure"><span class="header-section-number">4.5</span> Supporting infrastructure</h2>
 <ul>
 <li><strong>MCP (Model Context Protocol)</strong> connects agents to tools and services.</li>
 <li>Sandboxed execution environments such as Docker, Daytona, Modal, E2B, and browser infrastructure help isolate agent actions.</li>
 <li>Persistent memory and agent-written skills support longer-running work.</li>
-<li><strong>SpyNEL</strong> orchestrates existing coding harnesses.</li>
+<li><strong>SpyNEL</strong> orchestrates existing coding harnesses. See <a href="#agent-orchestration">Agent orchestration</a>.</li>
 <li><strong>DOX / AGENTS.md</strong> hierarchies give agents maintainable project context.</li>
 </ul>
 </section>
-<section id="agents.md" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="agents.md"><span class="header-section-number">4.4</span> <a href="https://agents.md/">agents.md</a></h2>
-<section id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents" class="level4" data-number="4.4.0.1">
-<h4 data-number="4.4.0.1" class="anchored" data-anchor-id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents"><span class="header-section-number">4.4.0.1</span> Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?</h4>
+<section id="agents.md" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="agents.md"><span class="header-section-number">4.6</span> <a href="https://agents.md/">agents.md</a></h2>
+<section id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents" class="level4" data-number="4.6.0.1">
+<h4 data-number="4.6.0.1" class="anchored" data-anchor-id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents"><span class="header-section-number">4.6.0.1</span> Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?</h4>
 <p><a href="https://arxiv.org/abs/2602.11988">Evaluating AGENTS.md: Are Repository-Level Context Files Helpful…</a></p>
 <p>Repository context files can affect coding-agent performance <span class="citation" data-cites="gloaguen2026agentsmd"><a href="../appendices/references.html#ref-gloaguen2026agentsmd" role="doc-biblioref">[1]</a></span>.</p>
 <table class="caption-top table">
@@ -704,12 +900,12 @@ div.csl-indent {
 <p>Practical takeaway that matches the evidence: Keep any AGENTS.md / CLAUDE.md extremely short. Prefer only non-discoverable facts (exact test/build commands that differ from the obvious, hard “never touch X”, unusual tooling). Long files that restate what is already in the code, README, or package.json are the ones most likely to waste tokens for little or no gain.</p>
 </section>
 </section>
-<section id="enterprise-level-agentic-engineering" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="enterprise-level-agentic-engineering"><span class="header-section-number">4.5</span> Enterprise-level agentic engineering</h2>
-<section id="kortix-companyos" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="kortix-companyos"><span class="header-section-number">4.5.1</span> <a href="https://kortix.com/">Kortix CompanyOS</a></h3>
+<section id="enterprise-level-agentic-engineering" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="enterprise-level-agentic-engineering"><span class="header-section-number">4.7</span> Enterprise-level agentic engineering</h2>
+<section id="kortix-companyos" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="kortix-companyos"><span class="header-section-number">4.7.1</span> <a href="https://kortix.com/">Kortix CompanyOS</a></h3>
 <blockquote class="blockquote">
-<p>is an open-source, cloud-native agent harness designed to run a company’s work as code. Kortix sits above personal coding or messaging agents. It is the operating system layer for teams that want agents doing real, ongoing company work (sales, support, engineering triage, marketing loops, ops, etc.) while keeping configuration, memory, and outcomes reviewable, versioned, and human-gated.</p>
+<p>is a source-available, cloud-native agent harness (Elastic License 2.0) designed to run a company’s work as code. Kortix sits above personal coding or messaging agents. It is the operating system layer for teams that want agents doing real, ongoing company work (sales, support, engineering triage, marketing loops, ops, etc.) while keeping configuration, memory, and outcomes reviewable, versioned, and human-gated.</p>
 </blockquote>
 <table class="caption-top table">
 <colgroup>

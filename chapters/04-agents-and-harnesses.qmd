@@ -54,7 +54,52 @@ can access, and how its work can be observed and controlled.
 
 
 Compare harnesses by their philosophy, strengths, limitations, deployment
-style, and fit for the task.
+style, and fit for the task. The tables below compare coding environments
+and multi-agent coordination. General harnesses such as Hermes, OpenClaw,
+goose, and Agent Zero stay in the table above.
+
+## Agentic development environments
+
+An [{{< glossary "(ADE) Agentic Development Environment" popup="hover" >}}](https://davidgeeraerts.github.io/AI/appendices/glossary.html#ade-agentic-development-environment) is the editor, IDE, or terminal where a developer works with a coding agent. The harness is built around a repository: the agent reads the project, calls tools, and proposes changes, and the developer reviews them in place. OpenCode, OpenHands, Codex, Claude Code, Cline, and Aider are the coding harnesses this book already tracks. Cursor, Devin Desktop, Zed, and Kiro are the other environments in wide use that fit the same slot.
+
+Cells were checked against each project's repository or docs in November 2026. The license column names the client or library.
+
+| Tool | Type | License | Local models | Multi-agent | Strength |
+| --- | --- | --- | --- | --- | --- |
+| [**OpenCode**](https://opencode.ai/) | Terminal, desktop, IDE | MIT | Ollama, LM Studio, and vLLM | Primary agents plus subagents (`build`, `plan`, `general`, `explore`) | Model-agnostic coding agent across terminal and editor |
+| [**OpenHands**](https://openhands.dev/) | Local control center | MIT | Any LLM you configure. The app runs on your machine by default | Its own agent plus other agents over ACP, across local, remote, and cloud backends | Self-hosted canvas for several coding agents |
+| [**Codex**](https://github.com/openai/codex) | CLI, IDE, cloud | Apache-2.0 (CLI source) | CLI: Ollama or LM Studio via `--oss`, or another Responses API server | Subagents, enabled by default in the CLI | Open terminal agent; the IDE extension shares its config |
+| [**Claude Code**](https://code.claude.com/) | CLI and IDE | Proprietary (Anthropic terms) | Claude models. Routing to non-Claude models is unsupported | Subagents, background sessions, and agent teams | Anthropic's coding harness: permissions, hooks, and skills |
+| [**Cline**](https://cline.bot/) | Extension, CLI, desktop | Apache-2.0 | Ollama, LM Studio, or an OpenAI-compatible local server | Subagents in the CLI and desktop app. The VS Code and JetBrains extensions do not use them | Open coding agent in the editor, the CLI, and a desktop app |
+| [**Aider**](https://aider.chat/) | Terminal | Apache-2.0 | Local models, including Ollama | Single agent | Pair programming in the terminal |
+| [**Cursor**](https://cursor.com/) | IDE, CLI, cloud | Proprietary | Hosted models. An OpenAI API key covers local Chat and Agent only | Built-in and custom subagents, including parallel runs | Editor-native agent with cloud agents on the same product |
+| [**Devin Desktop**](https://devin.ai/) (formerly Windsurf) | IDE | Proprietary | Hosted Cognition and provider models | Devin Local subagents; a command center for local, cloud, and ACP agents | Windsurf's editor, renamed 2 June 2026, as an agent command center |
+| [**Roo Code**](https://github.com/RooCodeInc/Roo-Code) | Editor extension | Apache-2.0 (archived) | Not restated in the shutdown README | Custom modes in one session (Code, Architect, Ask, Debug) | Shut down 15 May 2026. The README points to Zoo Code and Cline |
+| [**Zed**](https://zed.dev/) | Editor | GPL-3.0-or-later (Apache-2.0 where marked) | Ollama, LM Studio, llama.cpp, or a local OpenAI-compatible server | Built-in agent; other agents connect over ACP | Open editor with a local agent and guest agents |
+| [**Kiro**](https://kiro.dev/) | IDE, VS Code, CLI, web, mobile | Proprietary (AWS Customer Agreement) | Hosted catalog, including hosted open-weight models. No on-machine runtime is documented | Custom agents and sub-agents for parallel tasks | One harness across every surface, with specs, steering, and hooks |
+
+[Roo Code](https://github.com/RooCodeInc/Roo-Code)'s README says the extension shut down on 15 May 2026 and names [Zoo Code](https://github.com/Zoo-Code-Org/Zoo-Code) (Apache-2.0, a community fork) and Cline as the places to go next.
+
+## Agent orchestration
+
+[{{< glossary "Agent orchestration" popup="hover" >}}](https://davidgeeraerts.github.io/AI/appendices/glossary.html#agent-orchestration) is the layer that coordinates more than one agent on one task. A [multi-agent system](https://davidgeeraerts.github.io/AI/appendices/glossary.html#multi-agent-system) is the architecture. The orchestrator assigns work, passes state, and decides whether agents run in parallel, in sequence, or under a supervisor. A [sub-agent](https://davidgeeraerts.github.io/AI/appendices/glossary.html#sub-agent) is the narrow worker that pattern usually spawns.
+
+Libraries such as LangGraph, CrewAI, AG2, the OpenAI Agents SDK, and the Claude Agent SDK are how you build that coordination yourself. [SpyNEL](https://github.com/agent0ai/spynel), [Kortix](https://kortix.com/), and [Eigent](https://github.com/eigent-ai/eigent) are the coordinators this book already names: SpyNEL drives harnesses you already run, Kortix runs company work from a git repo, and Eigent is a desktop workforce.
+
+The same November 2026 check applies here. Microsoft's [AutoGen](https://github.com/microsoft/autogen) repository is archived. Its code license is MIT (`LICENSE-CODE`) and its docs are CC-BY-4.0. The archived README sends new users to Microsoft Agent Framework. The upstream `microsoft/agent-framework` repository did not resolve when this table was written, so the row for that lineage is [AG2](https://github.com/ag2ai/ag2), the active project that still carries the AutoGen name.
+
+| Tool | Type | License | Local models | Multi-agent | Strength |
+| --- | --- | --- | --- | --- | --- |
+| [**LangGraph**](https://docs.langchain.com/oss/python/langgraph/) | Library (Python and JavaScript) | MIT | None bundled. You supply the model client | Agents are nodes in a stateful graph. Deep Agents, built on LangGraph, adds subagents | Durable execution, checkpoints, and human interrupts |
+| [**CrewAI**](https://docs.crewai.com/) | Library (Python) | MIT | Ollama and other providers through LiteLLM | Role-based crews, and Flows for event-driven branching | A short path from roles to a crew |
+| [**AG2**](https://github.com/ag2ai/ag2) (formerly AutoGen) | Library (Python) | Apache-2.0 | `OllamaConfig`, or any OpenAI-compatible server (vLLM, LM Studio) | Agents cooperate through a hub and typed channels | Maintained line of the AutoGen idea |
+| [**OpenAI Agents SDK**](https://github.com/openai/openai-agents-python) | Library (Python and JavaScript) | MIT | OpenAI APIs, or any OpenAI-compatible endpoint | Handoffs and agents used as tools | Small surface: agents, guardrails, sessions, tracing |
+| [**Claude Agent SDK**](https://platform.claude.com/docs/en/agent-sdk/overview) | Library (Python and TypeScript) | Anthropic Commercial Terms (Python package is MIT) | Claude models, same constraint as Claude Code | Subagents, hooks, and skills from Claude Code | Claude Code's loop as a library you run |
+| [**SpyNEL**](https://github.com/agent0ai/spynel) | Orchestrator | MIT | No model of its own. Model support is the harness you attach | One chat drives many Codex, Claude Code, and other harness sessions | Reuses existing coding harnesses; task state stays in Markdown |
+| [**Kortix CompanyOS**](https://github.com/kortix-ai/CompanyOS) | Company harness | Elastic License 2.0 | Any model, in Kortix's cloud or yours | A fleet of agents for ongoing company work | Skills, memory, and connectors in one git repo |
+| [**Eigent**](https://github.com/eigent-ai/eigent) | Desktop | Apache-2.0 | Local deployment; any model you choose | A parallel workforce, or one meta agent | Desktop multi-agent workforce built on CAMEL |
+
+LangGraph does not pick a model or an agent shape. CrewAI's Ollama path is documented as a LiteLLM provider. The Claude Agent SDK overview says use of the SDK is governed by Anthropic's Commercial Terms, including when a component's own file says MIT.
 
 ## Supporting infrastructure
 
@@ -62,7 +107,7 @@ style, and fit for the task.
 - Sandboxed execution environments such as Docker, Daytona, Modal, E2B, and
   browser infrastructure help isolate agent actions.
 - Persistent memory and agent-written skills support longer-running work.
-- **SpyNEL** orchestrates existing coding harnesses.
+- **SpyNEL** orchestrates existing coding harnesses. See [Agent orchestration](#agent-orchestration).
 - **DOX / AGENTS.md** hierarchies give agents maintainable project context.
 
 
@@ -90,7 +135,7 @@ Practical takeaway that matches the evidence: Keep any AGENTS.md / CLAUDE.md ext
 ## Enterprise-level agentic engineering
 
 ### [Kortix CompanyOS](https://kortix.com/)
-> is an open-source, cloud-native agent harness designed to run a company’s work as code.
+> is a source-available, cloud-native agent harness (Elastic License 2.0) designed to run a company’s work as code.
 > Kortix sits above personal coding or messaging agents. It is the operating system layer for teams that want agents doing real, ongoing company work (sales, support, engineering triage, marketing loops, ops, etc.) while keeping configuration, memory, and outcomes reviewable, versioned, and human-gated.
 
 | Aspect | Kortix CompanyOS | Personal harnesses |

@@ -1,17 +1,28 @@
 ---
-
+title: Top 10 Coding LLMs
+page-layout: full
+date: last-modified
+date-format: iso
 ---
 
-# Top 10 Coding LLMs
-| Rank    | Configuration   | Model                           | Notes                         |
-|---------|-----------------|---------------------------------|-------------------------------|
-| 1 (tie) | Claude Code     | Claude Fable 5.2 (xhigh / high) | Shares the lead at ~58        |
-| 1 (tie) | Claude Code     | Claude Opus 5.5 (max)           | Shares the lead at ~58        |
-| 3       | Claude Code     | Claude Sonnet 5.5 (max)         | Strong mid-tier Claude option |
-| 4       | Antigravity CLI | Gemini 4 Carbon (high)          | Leading Google configuration  |
-| 5       | Muse Code       | Muse Wonder Full (max)          | Top Meta configuration        |
-| 6       | Codex           | GPT-6.2 Astra (max)             | Leading OpenAI configuration  |
-| 7       | Antigravity CLI | Gemini 4 Hydrogen (xhigh)       | —                             |
-| 8       | Codex           | GPT-6.2 Sol (xhigh)             | Stronger value OpenAI option  |
-| 9       | Kimi Code CLI   | Kimi K3.1 Pro                   | Leading open-weight option    |
-| 10      | Muse Code       | Muse Wonder (max)               | —                             |
+# Top Coding Agents: AA Coding Agent Index v2.1
+
+| Rank | Configuration    | Model (effort)                        | AA Index | FrontierCode 2.0 | FC Rank | Terminal-Bench 4.1 | SWE-Atlas QnA |
+|------|------------------|---------------------------------------|----------|------------------|---------|--------------------|---------------|
+| 1    | Antigravity CLI  | Gemini 4 Neon (xhigh)                 | 58.6     | 43               | 6 (tie) | 65                 | 68            |
+| 2    | Claude Code      | Claude Fable 5.2 (xhigh)              | 58.5     | 49               | 1 (tie) | 64                 | 62            |
+| 3    | Devin Fusion CLI | Claude Opus 5.5 Max + GPT-6 Luna High | 58.4     | 44               | 3 (tie) | 63                 | 68            |
+| 4    | Claude Code      | Claude Fable 5.2 (high)               | 58.2     | 49               | 1 (tie) | 64                 | 62            |
+| 5    | Claude Code      | Claude Opus 5.5 (max)                 | 58.2     | 44               | 3 (tie) | 65                 | 66            |
+| 6    | Claude Code      | Claude Sonnet 5.5 (max)               | 56.3     | 39               | 10      | 66                 | 64            |
+| 7    | Claude Code      | Claude Fable 5.2 (max)                | 55.7     | 44               | 3 (tie) | 63                 | 60            |
+| 8    | Antigravity CLI  | Gemini 4 Carbon (high)                | 55.5     | 38               | 11      | 65                 | 64            |
+| 9    | Muse Code        | Muse Wonder Full (max)                | 54.5     | 35               | 14      | 60                 | 69            |
+| 10   | Codex            | GPT-6.2 Astra (max)                   | 53.5     | 42               | 9       | 64                 | 55            |
+| 11   | Codex            | GPT-6.2 Astra (xhigh)                 | 53.1     | 43               | 6 (tie) | 62                 | 54            |
+| 12   | Codex            | GPT-6 Astra (max)                     | 53.1     | 43               | 6 (tie) | 58                 | 59            |
+| 13   | Claude Code      | Claude Fable 5.2 (medium)             | 53.0     | 36               | 13      | 60                 | 64            |
+| 14   | Claude Code      | Claude Fable 5.1 (max)                | 52.5     | 33               | 15      | 58                 | 66            |
+| 15   | Antigravity CLI  | Gemini 4 Hydrogen (xhigh)             | 52.3     | 37               | 12      | 60                 | 60            |
+
+Sources: [AA Coding Agent Index](https://artificialanalysis.ai/agents/coding-agents) component scores (whole numbers, Nov 25, 2026); one-decimal Index values from the [Nov 19 snapshot](https://myaidaily.net/coding-agents/). FC Rank is among these 15 rows.

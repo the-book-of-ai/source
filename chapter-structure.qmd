@@ -95,4 +95,24 @@ AI/
 The source files are the maintained material; `_book/` and `docs/` are generated outputs. The monthly digest and linked resources keep the book's map current as tools, models, and practices evolve.
 
 
+Looking at [claims](/sources/claims.yml) as a [reference](references.bib) for supporting evidence and examples for the book. The goal is to have a curated set of claims with supporting evidence and examples that can be used to support the arguments in the book.
 
+#### Claims Relationship Diagram
+
+```text
+references.bib
+  ├── @katz2026agentharness
+  └── @ibm2026agenticengineeringterms
+         │
+         └── cited by
+                │
+claims.yml
+  └── ch04-harness-repeatability
+         │
+         ├── source: 7Y4sbZgBdnc 18:12–19:38
+         └── source: SIZsFGvtClM 24:04–25:11
+                │
+                └── displayed in
+                       │
+                       └── chapters/04-agents-and-harnesses.qmd
+```

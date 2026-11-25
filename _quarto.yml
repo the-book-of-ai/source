@@ -5,9 +5,11 @@ project:
     - "!README.md"
     - "!CONTRIBUTING.md"
     - "!AGENTS.md"
+    - "!appendices/_ai-tools-static.md"
   pre-render:
     - quarto run scripts/generate-glossary.ts
     - quarto run scripts/latest-digest.ts
+    - quarto run scripts/ai-tools-static.ts
   preview:
     browser: true
     watch-inputs: false
@@ -70,6 +72,7 @@ book:
     - chapters/07-resources.qmd
   appendices:
     - appendices/glossary.qmd
+    - appendices/ai-tools.qmd
     - appendices/references.qmd
     - appendices/SOURCES.qmd
     - part: "Digests"

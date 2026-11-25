@@ -10,7 +10,26 @@
 
 > Be a comprehensive, well curated (signal from noise), maintained manual for agentic engineering, and building a practical toolkit for local LLM sovereignty.
 
+| Is it...? | Answer |
+|---|---|
+| A book | Yes |
+| A course | Yes |
+| A technical how-to | Yes |
+| A dictionary | Yes |
+| An encyclopedia | Yes |
+| A catalogue | Yes |
+| A digest | Yes |
+| The next incarnation of a digital "Anarchist Cookbook" | Yes |
+
+
 ## :construction: _This book is currently under heavy construction._ :construction:
+
+This book is currently in a state of being a scrapbook.
+Mostly made up of place holders and notes.
+That said, the foundation for the book is there, and it's slowly evolving. Still a pupa.
+One day, it will go through metamorphosis and become something spectacular!
+
+
 
 ### :fountain_pen: _Laying the foundation._ :fountain_pen:
 
@@ -33,43 +52,23 @@
 
 ### Current Focus
 
-Looking at [claims](/sources/claims.yml) as a [reference](references.bib) for supporting evidence and examples for the book. The goal is to have a curated set of claims with supporting evidence and examples that can be used to support the arguments in the book.
-
-#### Claims Relationship Diagram
-
-```text
-references.bib
-  ├── @katz2026agentharness
-  └── @ibm2026agenticengineeringterms
-         │
-         └── cited by
-                │
-claims.yml
-  └── ch04-harness-repeatability
-         │
-         ├── source: 7Y4sbZgBdnc 18:12–19:38
-         └── source: SIZsFGvtClM 24:04–25:11
-                │
-                └── displayed in
-                       │
-                       └── chapters/04-agents-and-harnesses.qmd
-```
+Appendix-AI-Tools Catalogue
 
 ### Status chart
 
 | Chapters                          | Title                    | Status   | Active          |
 |-----------------------------------|--------------------------|----------|-----------------|
-| Index                             | Main page                | revising | :yellow_circle: |
+| Index                             | Main page                | revising | :red_circle: |
 | Chapter 1                         | Introduction             | notes    | :red_circle:    |
-| Chapter 2                         | Models                   | draft    | :green_circle:  |
-| Chapter 3                         | Running local models     | draft    | :yellow_circle: |
+| Chapter 2                         | Models                   | draft    | :red_circle: |
+| Chapter 3                         | Running local models     | draft    | :red_circle: |
 | Chapter 4                         | Agents and Harnesses     | draft    | :red_circle:    |
-| Chapter 5                         | Building a working stack | notes    | :yellow_circle: |
-| Chapter 6                         | Miscellaneous Tools      | notes    | :red_circle:    |
-| Chapter 7                         | Resources                | review   | :yellow_circle: |
+| Chapter 5                         | Building a working stack | notes    | :red_circle:    |
+| Chapter 7                         | Resources                | review   | :red_circle: |
 | Appendix-Glossary                 | Glossary                 | revising | :yellow_circle: |
+| Appendix-AI-Tools                 | AI-Tools                 | draft    | :green_circle:  |
 | Appendix-Prompt Engineering Notes | Prompt Engineering Notes | final    | :red_circle:    |
-| Appendix-Digest Catalog           | Digest Catalog           | draft    | :yellow_circle: |
+| Appendix-Digest Catalog           | Digest Catalog           | draft    | :red_circle: |
 | Appendix-Bibliography             | Bibliography             | draft    | :yellow_circle: |
 
 #### Status key

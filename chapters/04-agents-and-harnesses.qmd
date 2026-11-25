@@ -54,7 +54,27 @@ can access, and how its work can be observed and controlled.
 
 
 Compare harnesses by their philosophy, strengths, limitations, deployment
-style, and fit for the task.
+style, and fit for the task. The table below is the next layer: apps that run
+several of those coding harnesses at once.
+
+## Agentic development environments
+
+An [{{< glossary "(ADE) Agentic Development Environment" popup="hover" >}}](https://davidgeeraerts.github.io/AI/appendices/glossary.html#ade-agentic-development-environment) runs, supervises, and orchestrates several coding agents in parallel. Claude Code, Codex, and OpenCode stay the agents. The ADE gives each task a session, often its own git worktree, and a terminal or desktop pane where you watch it. [{{< glossary "Agent orchestration" popup="hover" >}}](https://davidgeeraerts.github.io/AI/appendices/glossary.html#agent-orchestration) here means that supervision. It is the same category of app, not an agent SDK and not the editor you type in.
+
+[SpyNEL](https://github.com/agent0ai/spynel), already named below, drives Codex, Claude Code, and other harnesses from one chat (and from Telegram or WhatsApp). Its README does not describe per-task worktrees, so it is not a row in this table.
+
+Cells were checked against each project's repository or docs in November 2026. These apps do not ship a model. The agent you attach does.
+
+| Tool | Type | License | Agents | Isolation | Platforms | Local models | Strength |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [**T3 Code**](https://github.com/pingdotgg/t3code) | Desktop, web, phone | MIT | Claude Code, Codex, Cursor, OpenCode, other named CLIs, and any ACP agent | A thread can use its own git worktree | macOS, Windows, Linux; web; iOS and Android | None of its own. Drives agents you are already signed in to | One control plane for the agents already on your machine, including approval from a phone |
+| [**Herdr**](https://github.com/herdrdev/herdr) | TUI | Apache-2.0 | Claude Code, Codex, OpenCode, Cursor Agent CLI, and other CLIs it can detect | Terminal panes on a background server. The client can create and remove git worktrees | macOS and Linux; a Windows installer is documented | None of its own. Runs the agent CLIs you already use | Keeps agent terminals alive after you detach, and shows which pane is blocked |
+| [**Orca**](https://github.com/stablyai/orca) | Desktop | MIT | Claude Code, Codex, OpenCode, and any other agent CLI | One git worktree, branch, and agent terminal per task | macOS, Windows, and Linux, plus a mobile companion and remote runtimes | None of its own. Bring the agent subscription you already have | Worktree-native IDE: terminal, browser, and diff stay on that task |
+| [**Conductor**](https://www.conductor.build/) | Desktop | Not stated on the docs site | Claude Code, Codex, Cursor, and OpenCode | Git worktree and branch per workspace | macOS | None of its own. Uses the agents installed on your Mac | Review the diff, open a pull request, and merge from the workspace |
+| [**Nimbalyst**](https://github.com/nimbalyst/nimbalyst) (formerly Crystal) | Desktop | MIT | Codex, Claude Code, OpenCode (alpha), GitHub Copilot (alpha), and a Gemini provider | Git worktrees and branches | macOS, Windows, and Linux, plus an iOS companion | None of its own. Sessions run those agents | Visual workspace for parallel agent sessions. Crystal was deprecated in February 2026 |
+| [**Claude Squad**](https://github.com/smtg-ai/claude-squad) | TUI | AGPL-3.0 | Claude Code, Codex, Gemini, Aider, and other local agents | Isolated git workspace per task. Requires tmux | Not stated. Terminal app | None of its own. The program you launch can point at a local model, as in the Aider example | Several agent sessions in one terminal, each in its own workspace |
+| [**Vibe Kanban**](https://github.com/BloopAI/vibe-kanban) | Local web | Apache-2.0 | Claude Code, Codex, Gemini CLI, GitHub Copilot, Amp, Cursor, OpenCode, Droid, CCR, and Qwen Code | Workspace with its own branch, terminal, and dev server | Local app via `npx vibe-kanban` | None of its own. You authenticate the agent yourself | Kanban issues that open agent workspaces. bloop shut down on 10 April 2026; local workspaces remain |
+| [**Sculptor**](https://github.com/imbue-ai/sculptor) | Desktop | MIT | Claude Code and Pi, plus any terminal-based agent | Git worktree per workspace. Experimental Docker or remote backend | Mac (Apple Silicon), Linux, and Linux ARM64 | None of its own. Uses the harness you select | Parallel workspaces for an experimental research preview |
 
 ## Supporting infrastructure
 
@@ -62,7 +82,7 @@ style, and fit for the task.
 - Sandboxed execution environments such as Docker, Daytona, Modal, E2B, and
   browser infrastructure help isolate agent actions.
 - Persistent memory and agent-written skills support longer-running work.
-- **SpyNEL** orchestrates existing coding harnesses.
+- **SpyNEL** orchestrates existing coding harnesses. See [Agentic development environments](#agentic-development-environments) for the parallel-workspace apps.
 - **DOX / AGENTS.md** hierarchies give agents maintainable project context.
 
 

@@ -24,6 +24,9 @@ date-format: iso
 ### Agent loop
 > is the repeated cycle in which a model reasons about a goal, optionally calls tools, observes the results, and continues until it reaches a stopping condition (success, failure, iteration limit, or human intervention). It is the fundamental control structure of an agent.
 
+### Agent orchestration
+> is supervising several coding agents at once: starting them, keeping their sessions apart, and reviewing what each one changed. The usual tool is an app that runs Claude Code, Codex, OpenCode, or a similar harness in parallel, often with one git worktree and one terminal per task. T3 Code, Herdr, and Orca are orchestration apps in this sense. This is not a library for writing agent graphs. See also: [(ADE) Agentic Development Environment](#ade-agentic-development-environment), [Harness](#harness).
+
 ### Agentic AI
 > uses sophisticated reasoning and iterative planning to autonomously solve complex, multi-step problems.
 
@@ -39,6 +42,9 @@ At its core, Agentic AI is a type of AI that’s all about autonomy. This means 
 
 ### Agentic engineering stack
 > The layered set of models, harnesses, tools, memory, orchestration, and governance required to make AI agents reliable and controllable in real work. Mastering this stack is essential for moving from isolated prompts to robust, self-directed workflows that integrate seamlessly with local hardware and custom system administration tools.
+
+### (ADE) Agentic Development Environment
+> is the app where you run and supervise several coding agents together. Each task gets a session, usually in its own git worktree, with a terminal or desktop pane you can watch. The coding agent (Claude Code, Codex, OpenCode, and the other harnesses in this book) does the editing. The ADE orchestrates those agents. T3 Code, Herdr, and Orca are ADEs. See also: [Agent orchestration](#agent-orchestration), [Harness](#harness).
 
 ### Agentic Loop
 
@@ -822,6 +828,9 @@ A good harness (Hermes, OpenClaw, goose, etc.) dramatically changes what kind of
 
 ## I
 
+### ik_llama.cpp
+> is a [llama.cpp](https://github.com/ggml-org/llama.cpp) fork ([ikawrakow/ik_llama.cpp](https://github.com/ikawrakow/ik_llama.cpp)) with newer quantization types and faster CPU and hybrid CPU/GPU inference. Its fully functional compute backends are CPU and CUDA.
+
 ### Inference
 > is the process of using a trained machine learning model to make predictions or decisions based on new, unseen data. Inference involves passing input data through the model and obtaining output predictions without updating the model's parameters. Inference is a crucial step in deploying machine learning models for real-world applications.
 
@@ -1099,6 +1108,9 @@ Key Features of Mixture of Experts (MoE) Models:
 
 ## O
 
+### Ollama
+> is an MIT-licensed local model runner ([ollama.com](https://ollama.com)) with a command-line interface and a local API on port 11434, including an OpenAI-compatible endpoint. It is built on llama.cpp, serves a curated model library through `ollama pull`, and runs models as ordinary host processes. Many agent harnesses and coding tools assume this endpoint by default. It runs with lower overhead on NVIDIA GPUs and Apple Silicon.
+
 ### (OW) Open Weights
 > refers to AI models whose model weights (parameters learned during training) are publicly released alongside the model architecture, enabling users to freely use, modify, and redistribute the model. This contrasts with closed models (e.g., GPT-4, Claude), where only API access is provided, and weights are kept proprietary. Open weights models promote transparency, reproducibility, and community collaboration in AI research and development.
 
@@ -1340,6 +1352,9 @@ improvement and innovation. However, this race also raises important questions a
 ### Stacking
 > is an ensemble learning technique that combines multiple models to improve predictive performance. Stacking involves training a meta-model that learns to combine the predictions of base models to make the final prediction. Stacking helps reduce bias and variance by leveraging the diversity of individual models and can be applied to various machine learning algorithms.
 
+### Strata
+> is a Mixture-of-Experts inference engine ([Niko1221/Strata](https://github.com/Niko1221/Strata)) that streams experts across GPU VRAM, system RAM, and NVMe. Release 0.2.21 (November 2026) supports Qwen3.8-Flash-Next and Qwen3.6-35B-A3B. DeepSeek V4.1 support was dropped after 0.2.13; those engines stay frozen on that release. Strata does not run gpt-oss.
+
 ### Self-Attention Mechanism
 > is a key component of transformer-based neural networks that allows the model to weigh the importance of different parts of the input data relative to each other. Self-attention computes attention scores for each token in the input sequence based on their relationships with other tokens, enabling the model to focus on relevant information and capture long-range dependencies.
 
@@ -1354,6 +1369,9 @@ improvement and innovation. However, this race also raises important questions a
 
 ### Sequence-to-Sequence (Seq2Seq) Model
 > is a deep learning architecture used in natural language processing tasks, such as machine translation, text summarization, and question answering. The Seq2Seq model consists of an encoder that processes the input sequence and a decoder that generates the output sequence. This architecture is based on recurrent neural networks (RNNs) or transformer models and has been instrumental in advancing sequence-based tasks.
+
+### SGLang
+> is an Apache-2.0 serving framework ([sglang.io](https://www.sglang.io/)) for high-throughput inference of large language and multimodal models, with structured generation. RadixAttention reuses the KV cache across shared prompt prefixes, which fits agent and multi-turn workloads. It serves Hugging Face and local models through an OpenAI-compatible API and is used for production-scale serving.
 
 ### (SFT) Supervised Fine-Tuning
 > is a machine learning technique used to adapt a pre-trained model (e.g., a large language model or vision transformer) to a specific task or domain by training it on labeled data. Supervised fine-tuning involves updating the parameters of the pre-trained model using task-specific data to improve its performance on the target task. This approach is commonly used in transfer learning to leverage pre-trained models for downstream tasks. SFT bridges the gap between general pre-trained models and specialized applications, enabling efficient adaptation to real-world tasks. While powerful, its success depends on the quality of labeled data and careful hyperparameter tuning to balance task-specific performance with retained general knowledge. 
@@ -1663,6 +1681,9 @@ Transformers have revolutionized AI by enabling efficient and scalable processin
 
 ### Vector Database
 > is a database system optimized for storing and querying vector data, such as embeddings generated by machine learning models. Vector databases are designed to efficiently index and search high-dimensional vectors, enabling similarity search, clustering, and retrieval of similar items based on their vector representations. These databases are commonly used in recommendation systems, image search, and natural language processing applications. An example of a vector database is [Milvus](https://milvus.io/).
+
+### vLLM
+> is an Apache-2.0 serving engine ([vllm-project/vllm](https://github.com/vllm-project/vllm)) for high-throughput, multi-user inference. It manages attention memory with PagedAttention, batches incoming requests continuously, and serves Hugging Face and local models through an OpenAI-compatible API and the Anthropic Messages API. It is built for production serving, including multi-GPU throughput on NVIDIA and AMD hardware.
 
 ### (VPS) Virtual Private Server
 > is a virtualized server instance running on shared physical hardware in a data center, sold as a standalone machine with dedicated resources (CPU, RAM, storage, and usually a public IP). Unlike shared hosting, a VPS gives the user root access and full control over the operating system and installed software.

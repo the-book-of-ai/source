@@ -5,9 +5,11 @@ project:
     - "!README.md"
     - "!CONTRIBUTING.md"
     - "!AGENTS.md"
+    - "!appendices/_ai-tools-static.md"
   pre-render:
     - quarto run scripts/generate-glossary.ts
     - quarto run scripts/latest-digest.ts
+    - quarto run scripts/ai-tools-static.ts
   preview:
     browser: true
     watch-inputs: false
@@ -52,8 +54,8 @@ book:
   date-format: iso
   cover-image: assets/images/Book-Cover.jpg
   favicon: assets/images/favorite_icon.jpg
-  site-url: https://davidgeeraerts.github.io/AI
-  repo-url: https://github.com/davidgeeraerts/AI
+  site-url: https://the-book-of-ai.github.io/source
+  repo-url: https://github.com/the-book-of-ai/source
   repo-branch: main
   repo-actions: [edit, issue]
   search: true
@@ -70,6 +72,7 @@ book:
     - chapters/07-resources.qmd
   appendices:
     - appendices/glossary.qmd
+    - appendices/ai-tools.qmd
     - appendices/references.qmd
     - appendices/SOURCES.qmd
     - part: "Digests"

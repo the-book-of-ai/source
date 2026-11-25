@@ -4,7 +4,8 @@
 
 # Running a Model
 
-[ByteByteGo: How to Run LLMs Locally (Great For Learning and Privacy)](https://youtu.be/U8lGbSaCCYI?si=anfJL6PqQIxiVZwn)
+## Basics
+- [ByteByteGo: How to Run LLMs Locally (Great For Learning and Privacy)](https://youtu.be/U8lGbSaCCYI?si=anfJL6PqQIxiVZwn)
 
 
 ## Web/Online Models
@@ -178,6 +179,8 @@ Model management includes downloading and selecting models, quantization,
 Modelfiles, and custom system prompts. Hardware, memory requirements, and
 trade-offs vary by model and runner.
 
+{{< include /appendices/_top-10-Coding-LLMs.qmd >}}
+
 ## Cloud and hybrid options
 
 Hosted providers can complement local inference when a task needs a more
@@ -202,14 +205,6 @@ Unlike traditional hyperscalers (AWS, Microsoft Azure, Google Cloud), which offe
 
 **Why it matters in the agentic / practical AI landscape**  
 NeoClouds address the compute bottleneck that constrains both frontier model development and self-hosted or production agent systems. They expand the set of places you can actually rent serious GPU capacity outside the major hyperscalers.
-
-
-
-
-
-
-
-
 
 
 

@@ -1,1 +1,1 @@
-Sitemap: https://the-book-of-ai.github.io/source/sitemap.xml
+Sitemap: https://davidgeeraerts.github.io/AI/sitemap.xml

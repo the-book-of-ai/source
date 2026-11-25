@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/index.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/index.html</loc>
     <lastmod>2026-11-25T06:29:06.663Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapter-structure.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/chapter-structure.html</loc>
+    <lastmod>2026-11-25T18:54:02.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://the-book-of-ai.github.io/source/chapters/01-introduction.html</loc>
     <lastmod>2026-11-25T06:29:06.715Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/01-introduction.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/chapters/02-models.html</loc>
     <lastmod>2026-11-25T06:29:06.715Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/02-models.html</loc>
-    <lastmod>2026-11-25T06:29:06.715Z</lastmod>
+    <loc>https://the-book-of-ai.github.io/source/chapters/03-running-a-model.html</loc>
+    <lastmod>2026-11-25T18:54:02.218Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/03-running-a-model.html</loc>
-    <lastmod>2026-11-25T06:29:06.715Z</lastmod>
-  </url>
-  <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/04-agents-and-harnesses.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/chapters/04-agents-and-harnesses.html</loc>
     <lastmod>2026-11-25T12:16:49.673Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/05-building-a-working-stack.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/chapters/05-building-a-working-stack.html</loc>
     <lastmod>2026-11-25T06:29:06.715Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/06-miscellaneous-tools.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/chapters/06-miscellaneous-tools.html</loc>
     <lastmod>2026-11-25T06:29:06.715Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/chapters/07-resources.html</loc>
-    <lastmod>2026-11-25T06:29:06.715Z</lastmod>
+    <loc>https://the-book-of-ai.github.io/source/chapters/07-resources.html</loc>
+    <lastmod>2026-11-25T18:54:02.218Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/appendices/glossary.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/appendices/glossary.html</loc>
     <lastmod>2026-11-25T12:16:40.001Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/appendices/references.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/appendices/ai-tools.html</loc>
+    <lastmod>2026-11-25T18:54:02.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://the-book-of-ai.github.io/source/appendices/references.html</loc>
     <lastmod>2026-11-25T06:29:06.655Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/appendices/SOURCES.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/appendices/SOURCES.html</loc>
     <lastmod>2026-11-25T06:29:06.651Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/digest/digest_index.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/digest/digest_index.html</loc>
     <lastmod>2026-11-25T06:29:06.647Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/digest/2026-11-November-digest.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/digest/2026-11-November-digest.html</loc>
     <lastmod>2026-11-25T06:29:06.647Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/digest/2026-10-October-digest.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/digest/2026-10-October-digest.html</loc>
     <lastmod>2026-11-25T06:29:06.647Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/appendices/notes.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/appendices/notes.html</loc>
     <lastmod>2026-11-25T06:29:06.655Z</lastmod>
   </url>
   <url>
-    <loc>https://davidgeeraerts.github.io/AI/appendices/prompt-engineering-notes.html</loc>
+    <loc>https://the-book-of-ai.github.io/source/appendices/prompt-engineering-notes.html</loc>
     <lastmod>2026-11-25T06:29:06.655Z</lastmod>
   </url>
 </urlset>

@@ -72,9 +72,10 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-804ff48c6a59df9ad4519b55f4b8adc8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f8f43a95473fd713a4fc6b1579e33071.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-804ff48c6a59df9ad4519b55f4b8adc8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a47d45f0237b0d07620a0a60e1ec72e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-fcd7dbf3c84a34a1774f3f33ceb6d139.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-a47d45f0237b0d07620a0a60e1ec72e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/glossary/glossary.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -303,7 +304,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">The Book of AI</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/davidgeeraerts/AI" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/the-book-of-ai/source" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -401,14 +402,20 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../appendices/ai-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">AI Tools</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../appendices/references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/SOURCES.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">AI Sources Directory</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">AI Sources Directory</span></span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -418,7 +425,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../digest/digest_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Digest Index</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Digest Index</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -440,13 +447,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">LLM Notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">LLM Notes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/prompt-engineering-notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Prompt Engineering Notes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Prompt Engineering Notes</span></span></a>
   </div>
 </li>
       </ul>
@@ -466,14 +473,15 @@ div.csl-indent {
   <li><a href="#more-precise-breakdown" id="toc-more-precise-breakdown" class="nav-link" data-scroll-target="#more-precise-breakdown"><span class="header-section-number">4.1.1</span> More precise breakdown</a></li>
   </ul></li>
   <li><a href="#modern-harnesses" id="toc-modern-harnesses" class="nav-link" data-scroll-target="#modern-harnesses"><span class="header-section-number">4.2</span> Modern harnesses</a></li>
-  <li><a href="#supporting-infrastructure" id="toc-supporting-infrastructure" class="nav-link" data-scroll-target="#supporting-infrastructure"><span class="header-section-number">4.3</span> Supporting infrastructure</a></li>
-  <li><a href="#agents.md" id="toc-agents.md" class="nav-link" data-scroll-target="#agents.md"><span class="header-section-number">4.4</span> agents.md</a></li>
-  <li><a href="#enterprise-level-agentic-engineering" id="toc-enterprise-level-agentic-engineering" class="nav-link" data-scroll-target="#enterprise-level-agentic-engineering"><span class="header-section-number">4.5</span> Enterprise-level agentic engineering</a>
+  <li><a href="#agentic-development-environments" id="toc-agentic-development-environments" class="nav-link" data-scroll-target="#agentic-development-environments"><span class="header-section-number">4.3</span> Agentic development environments</a></li>
+  <li><a href="#supporting-infrastructure" id="toc-supporting-infrastructure" class="nav-link" data-scroll-target="#supporting-infrastructure"><span class="header-section-number">4.4</span> Supporting infrastructure</a></li>
+  <li><a href="#agents.md" id="toc-agents.md" class="nav-link" data-scroll-target="#agents.md"><span class="header-section-number">4.5</span> agents.md</a></li>
+  <li><a href="#enterprise-level-agentic-engineering" id="toc-enterprise-level-agentic-engineering" class="nav-link" data-scroll-target="#enterprise-level-agentic-engineering"><span class="header-section-number">4.6</span> Enterprise-level agentic engineering</a>
   <ul class="collapse">
-  <li><a href="#kortix-companyos" id="toc-kortix-companyos" class="nav-link" data-scroll-target="#kortix-companyos"><span class="header-section-number">4.5.1</span> Kortix CompanyOS</a></li>
+  <li><a href="#kortix-companyos" id="toc-kortix-companyos" class="nav-link" data-scroll-target="#kortix-companyos"><span class="header-section-number">4.6.1</span> Kortix CompanyOS</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/chapters/04-agents-and-harnesses.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/the-book-of-ai/source/edit/main/chapters/04-agents-and-harnesses.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-book-of-ai/source/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content" tabindex="-1">
@@ -652,22 +660,124 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>Compare harnesses by their philosophy, strengths, limitations, deployment style, and fit for the task.</p>
+<p>Compare harnesses by their philosophy, strengths, limitations, deployment style, and fit for the task. The table below is the next layer: apps that run several of those coding harnesses at once.</p>
 </section>
-<section id="supporting-infrastructure" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="supporting-infrastructure"><span class="header-section-number">4.3</span> Supporting infrastructure</h2>
+<section id="agentic-development-environments" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="agentic-development-environments"><span class="header-section-number">4.3</span> Agentic development environments</h2>
+<p>An <a href="https://davidgeeraerts.github.io/AI/appendices/glossary.html#ade-agentic-development-environment"><button class="glossary" title="is the app where you run and supervise several coding agents together. Each task gets a session, usually in its own git worktree, with a terminal or desktop pane you can watch. The coding agent (Claude Code, Codex, OpenCode, and the other harnesses in this book) does the editing. The ADE orchestrates those agents. T3 Code, Herdr, and Orca are ADEs. See also: Agent orchestration, Harness.">(ADE) Agentic Development Environment</button></a> runs, supervises, and orchestrates several coding agents in parallel. Claude Code, Codex, and OpenCode stay the agents. The ADE gives each task a session, often its own git worktree, and a terminal or desktop pane where you watch it. <a href="https://davidgeeraerts.github.io/AI/appendices/glossary.html#agent-orchestration"><button class="glossary" title="is supervising several coding agents at once: starting them, keeping their sessions apart, and reviewing what each one changed. The usual tool is an app that runs Claude Code, Codex, OpenCode, or a similar harness in parallel, often with one git worktree and one terminal per task. T3 Code, Herdr, and Orca are orchestration apps in this sense. This is not a library for writing agent graphs. See also: (ADE) Agentic Development Environment, Harness.">Agent orchestration</button></a> here means that supervision. It is the same category of app, not an agent SDK and not the editor you type in.</p>
+<p><a href="https://github.com/agent0ai/spynel">SpyNEL</a>, already named below, drives Codex, Claude Code, and other harnesses from one chat (and from Telegram or WhatsApp). Its README does not describe per-task worktrees, so it is not a row in this table.</p>
+<p>Cells were checked against each project’s repository or docs in November 2026. These apps do not ship a model. The agent you attach does.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Type</th>
+<th>License</th>
+<th>Agents</th>
+<th>Isolation</th>
+<th>Platforms</th>
+<th>Local models</th>
+<th>Strength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://github.com/pingdotgg/t3code"><strong>T3 Code</strong></a></td>
+<td>Desktop, web, phone</td>
+<td>MIT</td>
+<td>Claude Code, Codex, Cursor, OpenCode, other named CLIs, and any ACP agent</td>
+<td>A thread can use its own git worktree</td>
+<td>macOS, Windows, Linux; web; iOS and Android</td>
+<td>None of its own. Drives agents you are already signed in to</td>
+<td>One control plane for the agents already on your machine, including approval from a phone</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/herdrdev/herdr"><strong>Herdr</strong></a></td>
+<td>TUI</td>
+<td>Apache-2.0</td>
+<td>Claude Code, Codex, OpenCode, Cursor Agent CLI, and other CLIs it can detect</td>
+<td>Terminal panes on a background server. The client can create and remove git worktrees</td>
+<td>macOS and Linux; a Windows installer is documented</td>
+<td>None of its own. Runs the agent CLIs you already use</td>
+<td>Keeps agent terminals alive after you detach, and shows which pane is blocked</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/stablyai/orca"><strong>Orca</strong></a></td>
+<td>Desktop</td>
+<td>MIT</td>
+<td>Claude Code, Codex, OpenCode, and any other agent CLI</td>
+<td>One git worktree, branch, and agent terminal per task</td>
+<td>macOS, Windows, and Linux, plus a mobile companion and remote runtimes</td>
+<td>None of its own. Bring the agent subscription you already have</td>
+<td>Worktree-native IDE: terminal, browser, and diff stay on that task</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.conductor.build/"><strong>Conductor</strong></a></td>
+<td>Desktop</td>
+<td>Not stated on the docs site</td>
+<td>Claude Code, Codex, Cursor, and OpenCode</td>
+<td>Git worktree and branch per workspace</td>
+<td>macOS</td>
+<td>None of its own. Uses the agents installed on your Mac</td>
+<td>Review the diff, open a pull request, and merge from the workspace</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/nimbalyst/nimbalyst"><strong>Nimbalyst</strong></a> (formerly Crystal)</td>
+<td>Desktop</td>
+<td>MIT</td>
+<td>Codex, Claude Code, OpenCode (alpha), GitHub Copilot (alpha), and a Gemini provider</td>
+<td>Git worktrees and branches</td>
+<td>macOS, Windows, and Linux, plus an iOS companion</td>
+<td>None of its own. Sessions run those agents</td>
+<td>Visual workspace for parallel agent sessions. Crystal was deprecated in February 2026</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/smtg-ai/claude-squad"><strong>Claude Squad</strong></a></td>
+<td>TUI</td>
+<td>AGPL-3.0</td>
+<td>Claude Code, Codex, Gemini, Aider, and other local agents</td>
+<td>Isolated git workspace per task. Requires tmux</td>
+<td>Not stated. Terminal app</td>
+<td>None of its own. The program you launch can point at a local model, as in the Aider example</td>
+<td>Several agent sessions in one terminal, each in its own workspace</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/BloopAI/vibe-kanban"><strong>Vibe Kanban</strong></a></td>
+<td>Local web</td>
+<td>Apache-2.0</td>
+<td>Claude Code, Codex, Gemini CLI, GitHub Copilot, Amp, Cursor, OpenCode, Droid, CCR, and Qwen Code</td>
+<td>Workspace with its own branch, terminal, and dev server</td>
+<td>Local app via <code>npx vibe-kanban</code></td>
+<td>None of its own. You authenticate the agent yourself</td>
+<td>Kanban issues that open agent workspaces. bloop shut down on 10 April 2026; local workspaces remain</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/imbue-ai/sculptor"><strong>Sculptor</strong></a></td>
+<td>Desktop</td>
+<td>MIT</td>
+<td>Claude Code and Pi, plus any terminal-based agent</td>
+<td>Git worktree per workspace. Experimental Docker or remote backend</td>
+<td>Mac (Apple Silicon), Linux, and Linux ARM64</td>
+<td>None of its own. Uses the harness you select</td>
+<td>Parallel workspaces for an experimental research preview</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="supporting-infrastructure" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="supporting-infrastructure"><span class="header-section-number">4.4</span> Supporting infrastructure</h2>
 <ul>
 <li><strong>MCP (Model Context Protocol)</strong> connects agents to tools and services.</li>
 <li>Sandboxed execution environments such as Docker, Daytona, Modal, E2B, and browser infrastructure help isolate agent actions.</li>
 <li>Persistent memory and agent-written skills support longer-running work.</li>
-<li><strong>SpyNEL</strong> orchestrates existing coding harnesses.</li>
+<li><strong>SpyNEL</strong> orchestrates existing coding harnesses. See <a href="#agentic-development-environments">Agentic development environments</a> for the parallel-workspace apps.</li>
 <li><strong>DOX / AGENTS.md</strong> hierarchies give agents maintainable project context.</li>
 </ul>
 </section>
-<section id="agents.md" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="agents.md"><span class="header-section-number">4.4</span> <a href="https://agents.md/">agents.md</a></h2>
-<section id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents" class="level4" data-number="4.4.0.1">
-<h4 data-number="4.4.0.1" class="anchored" data-anchor-id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents"><span class="header-section-number">4.4.0.1</span> Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?</h4>
+<section id="agents.md" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="agents.md"><span class="header-section-number">4.5</span> <a href="https://agents.md/">agents.md</a></h2>
+<section id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents" class="level4" data-number="4.5.0.1">
+<h4 data-number="4.5.0.1" class="anchored" data-anchor-id="evaluating-agents.md-are-repository-level-context-files-helpful-for-coding-agents"><span class="header-section-number">4.5.0.1</span> Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?</h4>
 <p><a href="https://arxiv.org/abs/2602.11988">Evaluating AGENTS.md: Are Repository-Level Context Files Helpful…</a></p>
 <p>Repository context files can affect coding-agent performance <span class="citation" data-cites="gloaguen2026agentsmd"><a href="../appendices/references.html#ref-gloaguen2026agentsmd" role="doc-biblioref">[1]</a></span>.</p>
 <table class="caption-top table">
@@ -704,10 +814,10 @@ div.csl-indent {
 <p>Practical takeaway that matches the evidence: Keep any AGENTS.md / CLAUDE.md extremely short. Prefer only non-discoverable facts (exact test/build commands that differ from the obvious, hard “never touch X”, unusual tooling). Long files that restate what is already in the code, README, or package.json are the ones most likely to waste tokens for little or no gain.</p>
 </section>
 </section>
-<section id="enterprise-level-agentic-engineering" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="enterprise-level-agentic-engineering"><span class="header-section-number">4.5</span> Enterprise-level agentic engineering</h2>
-<section id="kortix-companyos" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="kortix-companyos"><span class="header-section-number">4.5.1</span> <a href="https://kortix.com/">Kortix CompanyOS</a></h3>
+<section id="enterprise-level-agentic-engineering" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="enterprise-level-agentic-engineering"><span class="header-section-number">4.6</span> Enterprise-level agentic engineering</h2>
+<section id="kortix-companyos" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="kortix-companyos"><span class="header-section-number">4.6.1</span> <a href="https://kortix.com/">Kortix CompanyOS</a></h3>
 <blockquote class="blockquote">
 <p>is an open-source, cloud-native agent harness designed to run a company’s work as code. Kortix sits above personal coding or messaging agents. It is the operating system layer for teams that want agents doing real, ongoing company work (sales, support, engineering triage, marketing loops, ops, etc.) while keeping configuration, memory, and outcomes reviewable, versioned, and human-gated.</p>
 </blockquote>
@@ -884,7 +994,7 @@ div.csl-indent {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/davidgeeraerts\.github\.io\/AI");
+        var filterRegex = new RegExp("https:\/\/the-book-of-ai\.github\.io\/source");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1304,5 +1414,5 @@ div.csl-indent {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/chapters/04-agents-and-harnesses.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/the-book-of-ai/source/edit/main/chapters/04-agents-and-harnesses.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/the-book-of-ai/source/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

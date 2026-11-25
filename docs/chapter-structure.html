@@ -607,8 +607,27 @@ ul.task-list li input[type="checkbox"] {
 ├── _book/                      # Generated book artifacts
 └── docs/                        # Generated website output</code></pre>
 <p>The source files are the maintained material; <code>_book/</code> and <code>docs/</code> are generated outputs. The monthly digest and linked resources keep the book’s map current as tools, models, and practices evolve.</p>
+<p>Looking at <a href="./sources/claims.yml">claims</a> as a <a href="references.bib">reference</a> for supporting evidence and examples for the book. The goal is to have a curated set of claims with supporting evidence and examples that can be used to support the arguments in the book.</p>
+<section id="claims-relationship-diagram" class="level4">
+<h4 class="anchored" data-anchor-id="claims-relationship-diagram">Claims Relationship Diagram</h4>
+<pre class="text"><code>references.bib
+  ├── @katz2026agentharness
+  └── @ibm2026agenticengineeringterms
+         │
+         └── cited by
+                │
+claims.yml
+  └── ch04-harness-repeatability
+         │
+         ├── source: 7Y4sbZgBdnc 18:12–19:38
+         └── source: SIZsFGvtClM 24:04–25:11
+                │
+                └── displayed in
+                       │
+                       └── chapters/04-agents-and-harnesses.qmd</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -522,7 +522,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="agent-orchestration" class="level3" data-number="A.1.4">
 <h3 data-number="A.1.4" class="anchored" data-anchor-id="agent-orchestration"><span class="header-section-number">A.1.4</span> Agent orchestration</h3>
 <blockquote class="blockquote">
-<p>is the layer that coordinates more than one agent on a shared task. It assigns work, passes state, and decides whether agents run in parallel, in sequence, or under a supervisor. LangGraph, CrewAI, and AG2 are orchestration libraries. SpyNEL is an orchestrator that drives coding harnesses you already run. A multi-agent system is the architecture; orchestration is the control over that architecture. See also: <a href="#multi-agent-system">Multi-agent system</a>, <a href="#sub-agent">Sub-agent</a>, <a href="#ade-agentic-development-environment">(ADE) Agentic Development Environment</a>.</p>
+<p>is supervising several coding agents at once: starting them, keeping their sessions apart, and reviewing what each one changed. The usual tool is an app that runs Claude Code, Codex, OpenCode, or a similar harness in parallel, often with one git worktree and one terminal per task. T3 Code, Herdr, and Orca are orchestration apps in this sense. This is not a library for writing agent graphs. See also: <a href="#ade-agentic-development-environment">(ADE) Agentic Development Environment</a>, <a href="#harness">Harness</a>.</p>
 </blockquote>
 </section>
 <section id="agentic-ai" class="level3" data-number="A.1.5">
@@ -555,7 +555,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="ade-agentic-development-environment" class="level3" data-number="A.1.8">
 <h3 data-number="A.1.8" class="anchored" data-anchor-id="ade-agentic-development-environment"><span class="header-section-number">A.1.8</span> (ADE) Agentic Development Environment</h3>
 <blockquote class="blockquote">
-<p>is the editor, IDE, or terminal where a developer works with a coding agent. The harness is built around a repository: the agent reads the project, uses tools, and proposes changes, and the developer reviews them in place. OpenCode, Claude Code, Codex, Cline, Cursor, and Zed are ADEs. A general harness such as goose or Hermes can write code too; an ADE is organized around the editor and the repository. See also: <a href="#harness">Harness</a>, <a href="#agent-orchestration">Agent orchestration</a>.</p>
+<p>is the app where you run and supervise several coding agents together. Each task gets a session, usually in its own git worktree, with a terminal or desktop pane you can watch. The coding agent (Claude Code, Codex, OpenCode, and the other harnesses in this book) does the editing. The ADE orchestrates those agents. T3 Code, Herdr, and Orca are ADEs. See also: <a href="#agent-orchestration">Agent orchestration</a>, <a href="#harness">Harness</a>.</p>
 </blockquote>
 </section>
 <section id="agentic-loop" class="level3" data-number="A.1.9">

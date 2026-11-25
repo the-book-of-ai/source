@@ -70,6 +70,7 @@ book:
     - chapters/07-resources.qmd
   appendices:
     - appendices/glossary.qmd
+    - appendices/ai-tools.md
     - appendices/references.qmd
     - appendices/SOURCES.qmd
     - part: "Digests"

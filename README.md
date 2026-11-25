@@ -10,7 +10,26 @@
 
 > Be a comprehensive, well curated (signal from noise), maintained manual for agentic engineering, and building a practical toolkit for local LLM sovereignty.
 
+| Is it...? | Answer |
+|---|---|
+| A book | Yes |
+| A course | Yes |
+| A technical how-to | Yes |
+| A dictionary | Yes |
+| An encyclopedia | Yes |
+| A catalogue | Yes |
+| A digest | Yes |
+| The next incarnation of a digital "Anarchist Cookbook" | Yes |
+
+
 ## :construction: _This book is currently under heavy construction._ :construction:
+
+This book is currently in a state of being a scrapbook.
+Mostly made up of place holders and notes.
+That said, the foundation for the book is there, and it's slowly evolving. Still a pupa.
+One day, it will go through metamorphosis and become something spectacular!
+
+
 
 ### :fountain_pen: _Laying the foundation._ :fountain_pen:
 

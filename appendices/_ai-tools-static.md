@@ -1,17 +1,4 @@
----
-title: "AI Tools"
-page-layout: full
-date: last-modified
-date-format: iso
----
-
-Living catalog of agentic-engineering tools. The [glossary](glossary.qmd) defines concepts. This page names the programs: what they are licensed as, where they run, and one factual strength and limitation each.
-
-**Last checked: Nov 2026** (repository metadata, LICENSE files, and the official pages linked below, read 25 Nov 2026).
-
-A row is here when the book, an open chapter or glossary pull request, a GitHub issue on this repo, or a current production project names it, and a primary source states the license and platform. Issues are not closed by this page. License is the SPDX identifier, `Proprietary` when the product is closed and publishes no source license, or `Not stated` when the repo or site does not say. Platform uses Desktop, Mobile, and SaaS, plus CLI or Self-hosted when that is the accurate form. Empty cells are not guessed.
-
-[DHH](https://x.com/dhh) tags are only for tools he says he uses, or that [Omarchy](https://github.com/omacom/omarchy) ships. `basecamp/omarchy` redirects to `omacom/omarchy`. The manual cited below is `manual/17-ai.md` on the `quattro` branch. X posts cited here are his. Full-archive search was not available on this pass; the posts were read from his timeline and from the pages linked in the Note column.
+<!-- Generated from ai-tools.csv. Do not edit by hand. -->
 
 ## Inference engines and runners
 
@@ -42,8 +29,6 @@ A row is here when the book, an open chapter or glossary pull request, a GitHub 
 | [Fireworks](https://fireworks.ai/) | Hosted inference | Not stated | SaaS | Token API he uses for open-weight models | License of the service is not stated on the sources read here | Used by DHH ([Lex #501 transcript](https://lexfridman.com/dhh-2-transcript/)). Omarchy's agents panel can store a Fireworks key for OpenCode |
 
 ## Agentic development environments
-
-These apps run coding agents in parallel. They do not ship a model.
 
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -82,9 +67,7 @@ These apps run coding agents in parallel. They do not ship a model.
 | [Grok Build](https://x.ai/) | Coding agent | Not stated | CLI | Omarchy installs a `grok` CLI through mise and warns against a second curl installer | No LICENSE file was found for the CLI | Shipped in Omarchy. He uses the Grok model (see models), including a review pass ([transcript](https://lexfridman.com/dhh-2-transcript/)) |
 | [Kortix CompanyOS](https://github.com/kortix-ai/CompanyOS) | Agent harness | Elastic-2.0 | Self-hosted, SaaS | README: agents, skills, and memory in a git repo, with a cloud computer per agent | Elastic-2.0 is not an OSI license. `kortix-ai/suna` now resolves here. `kortix-ai/kortix` is 404 | Issue #14 and chapter 4 |
 
-### Omarchy launchers whose license was not in a public LICENSE file
-
-The [Omarchy manual](https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md) installs each of these as a terminal command. Platform is CLI because that page says so. License is `Not stated` because this pass did not find an SPDX identifier.
+## Omarchy launchers whose license was not in a public LICENSE file
 
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -99,7 +82,7 @@ The [Omarchy manual](https://github.com/omacom/omarchy/blob/quattro/manual/17-ai
 | Oh My Pi | Coding agent | Not stated | CLI | Manual command `omp` | License not stated | Shipped in Omarchy |
 | Ori | Coding agent | Not stated | CLI | Manual: `ori` runs other harnesses against OpenRouter, and `ori code` is its own agent | License not stated | Shipped in Omarchy |
 
-### Not a stable release yet
+## Not a stable release yet
 
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -122,8 +105,6 @@ The [Omarchy manual](https://github.com/omacom/omarchy/blob/quattro/manual/17-ai
 | [Mastra](https://github.com/mastra-ai/mastra) | Agent framework | Not stated | Self-hosted | TypeScript agent framework, pushed 25 Nov 2026 | LICENSE.md splits terms; an `ee/` tree is called out separately | Not a single SPDX id |
 
 ## MCP, skills, and agent-facing CLIs
-
-The Model Context Protocol is the wiring standard. These rows are programs, not the spec.
 
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -160,8 +141,6 @@ The Model Context Protocol is the wiring standard. These rows are programs, not 
 
 ## Terminal tools in DHH's workflow
 
-These are not models. He names them as the way he watches agents.
-
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Ghostty](https://github.com/ghostty-org/ghostty) | Terminal | MIT | Desktop | GPU terminal with native UI on each platform | A terminal, not an agent | Used by DHH ([transcript](https://lexfridman.com/dhh-2-transcript/)) |
@@ -173,8 +152,6 @@ These are not models. He names them as the way he watches agents.
 
 ## Desktop chat apps Omarchy installs
 
-The manual's Install, AI menu names these graphical apps. License is `Not stated` unless a row above already covers the same product (Claude, Hermes, Herdr, Amp, T3 Code, OpenClaw).
-
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | ChatGPT desktop | Chat app | Not stated | Desktop | Omarchy Install, AI entry | License not stated in the manual | Shipped in Omarchy. Distinct from the Codex CLI |
@@ -182,8 +159,6 @@ The manual's Install, AI menu names these graphical apps. License is `Not stated
 | Grok Bot | Chat app | Not stated | Desktop | Manual: desktop chat app, separate from the `grok` coding CLI | License not stated in the manual | Shipped in Omarchy. He suggested pairing a laptop with a Grok bot for remote work ([post](https://x.com/dhh/status/2110503544063488177), 14 Oct 2026) |
 
 ## Models he says he runs
-
-Weights are not harnesses. License is `Not stated` because this pass did not open a model card or a weights LICENSE. Platform is SaaS where he describes a subscription or a token API.
 
 | Tool | Category | License | Platform | Strength | Limitation | Note |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -203,27 +178,3 @@ Weights are not harnesses. License is `Not stated` because this pass did not ope
 | --- | --- | --- | --- | --- | --- | --- |
 | [gputaskman](https://github.com/shanselman/gputaskman) | GPU monitor | MIT | CLI | Per-process VRAM and LLM buffer breakdown on Windows, Linux, WSL, and macOS | README calls it early experimental software; model breakdowns are estimates | Issue #23. Release v0.4.5 is dated 21 Nov 2026 |
 | [ArtCraft Launcher](https://github.com/storytold/craft-launcher) | App launcher | Apache-2.0 | Desktop | Installs and opens the Craft app suite. Stable release v0.20.1 on 25 Nov 2026 | A creative-suite launcher, not a coding agent | Issue #22. The issue link is the older tag v0.19.2. Site: [getartcraft.com](https://getartcraft.com/) |
-
-## Retired, quiet, or archived
-
-Not in the tables above.
-
-- [Hugging Face TGI](https://github.com/huggingface/text-generation-inference) is archived. Last push 21 Mar 2026. Apache-2.0. Chapter 3 still names it.
-- [GPT4All](https://github.com/nomic-ai/gpt4all) is not archived, and the last push is 27 May 2025. MIT. The glossary mentions it as a GGUF runner.
-- [AutoGen](https://github.com/microsoft/autogen) is archived. GitHub reports CC-BY-4.0. No successor repo was found at `microsoft/agent-framework`.
-- [Daytona](https://github.com/daytonaio/daytona) is archived. Last push 24 Jul 2026. Chapter 4 names it as a sandbox. The product site in the repo description was not re-read.
-- [Aider](https://github.com/Aider-AI/aider) is not archived. Apache-2.0. Last push 22 May 2026, so it is not listed as a current production harness. Chapter 4 still names it. Claude Squad's README still lists it as a local agent you can launch.
-
-## Named in the book, not given a row
-
-License or current repository was not confirmed, or the entry is not an agentic-engineering tool.
-
-- Sandboxes named in chapter 4 or the digests, without a license file read this pass: Modal, [Kernel](https://www.kernel.sh/), [Capsem](https://docs.capsem.org/getting-started/intro/).
-- Chapter 3 links `microsoft/onnxruntime-genai`, and that repository returned 404, so ONNX Runtime GenAI has no row. `ggml-org/llamafile` also returned 404; it is not named in the chapters read here.
-- November digest plugins not re-checked: HERMES WebUI and switchyard-local-first-routing.
-- Issue #13 links [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses), a CC-BY-SA-4.0 ranked list of 187 harnesses, rescored weekly (last push 22 Nov 2026). This page does not copy those 187 rows. Each license was not re-checked.
-- Issue #10 links the YouTube channel [DevLogic-3.14](https://www.youtube.com/@DevLogic-3.14). It names no product.
-- Issue #21 links a Reddit thread about YouTubers for agent workflows. The issue body names no product, and the thread was not fetched.
-- Issue #5 is a list of people on X, not tools. Issue #15 is books. Issue #8 is videos. Issue #11 is label names.
-- Chapter 2 model vendors, image and video models, and chapter 6 utilities (Excalidraw, Tiktokenizer) are outside this catalog.
-- Shutdown stories for Roo Code, Continue, and Gas Town were not re-read from a primary source, so they are not listed as retired.

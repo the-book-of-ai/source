@@ -28,6 +28,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -84,6 +119,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 </head>
@@ -448,25 +485,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#inference-engines-and-runners" id="toc-inference-engines-and-runners" class="nav-link active" data-scroll-target="#inference-engines-and-runners"><span class="header-section-number">B.1</span> Inference engines and runners</a></li>
-  <li><a href="#agentic-development-environments" id="toc-agentic-development-environments" class="nav-link" data-scroll-target="#agentic-development-environments"><span class="header-section-number">B.2</span> Agentic development environments</a></li>
-  <li><a href="#coding-agents-and-harnesses" id="toc-coding-agents-and-harnesses" class="nav-link" data-scroll-target="#coding-agents-and-harnesses"><span class="header-section-number">B.3</span> Coding agents and harnesses</a>
-  <ul class="collapse">
-  <li><a href="#omarchy-launchers-whose-license-was-not-in-a-public-license-file" id="toc-omarchy-launchers-whose-license-was-not-in-a-public-license-file" class="nav-link" data-scroll-target="#omarchy-launchers-whose-license-was-not-in-a-public-license-file"><span class="header-section-number">B.3.1</span> Omarchy launchers whose license was not in a public LICENSE file</a></li>
-  <li><a href="#not-a-stable-release-yet" id="toc-not-a-stable-release-yet" class="nav-link" data-scroll-target="#not-a-stable-release-yet"><span class="header-section-number">B.3.2</span> Not a stable release yet</a></li>
-  </ul></li>
-  <li><a href="#agent-frameworks-and-sdks" id="toc-agent-frameworks-and-sdks" class="nav-link" data-scroll-target="#agent-frameworks-and-sdks"><span class="header-section-number">B.4</span> Agent frameworks and SDKs</a></li>
-  <li><a href="#mcp-skills-and-agent-facing-clis" id="toc-mcp-skills-and-agent-facing-clis" class="nav-link" data-scroll-target="#mcp-skills-and-agent-facing-clis"><span class="header-section-number">B.5</span> MCP, skills, and agent-facing CLIs</a></li>
-  <li><a href="#evals-and-observability" id="toc-evals-and-observability" class="nav-link" data-scroll-target="#evals-and-observability"><span class="header-section-number">B.6</span> Evals and observability</a></li>
-  <li><a href="#sandboxes-and-agent-runtimes" id="toc-sandboxes-and-agent-runtimes" class="nav-link" data-scroll-target="#sandboxes-and-agent-runtimes"><span class="header-section-number">B.7</span> Sandboxes and agent runtimes</a></li>
-  <li><a href="#terminal-tools-in-dhhs-workflow" id="toc-terminal-tools-in-dhhs-workflow" class="nav-link" data-scroll-target="#terminal-tools-in-dhhs-workflow"><span class="header-section-number">B.8</span> Terminal tools in DHH’s workflow</a></li>
-  <li><a href="#desktop-chat-apps-omarchy-installs" id="toc-desktop-chat-apps-omarchy-installs" class="nav-link" data-scroll-target="#desktop-chat-apps-omarchy-installs"><span class="header-section-number">B.9</span> Desktop chat apps Omarchy installs</a></li>
-  <li><a href="#models-he-says-he-runs" id="toc-models-he-says-he-runs" class="nav-link" data-scroll-target="#models-he-says-he-runs"><span class="header-section-number">B.10</span> Models he says he runs</a></li>
-  <li><a href="#local-machine-and-other-issue-tools" id="toc-local-machine-and-other-issue-tools" class="nav-link" data-scroll-target="#local-machine-and-other-issue-tools"><span class="header-section-number">B.11</span> Local machine and other issue tools</a></li>
-  <li><a href="#retired-quiet-or-archived" id="toc-retired-quiet-or-archived" class="nav-link" data-scroll-target="#retired-quiet-or-archived"><span class="header-section-number">B.12</span> Retired, quiet, or archived</a></li>
-  <li><a href="#named-in-the-book-not-given-a-row" id="toc-named-in-the-book-not-given-a-row" class="nav-link" data-scroll-target="#named-in-the-book-not-given-a-row"><span class="header-section-number">B.13</span> Named in the book, not given a row</a></li>
+  <li><a href="#retired-quiet-or-archived" id="toc-retired-quiet-or-archived" class="nav-link active" data-scroll-target="#retired-quiet-or-archived"><span class="header-section-number">B.1</span> Retired, quiet, or archived</a></li>
+  <li><a href="#named-in-the-book-not-given-a-row" id="toc-named-in-the-book-not-given-a-row" class="nav-link" data-scroll-target="#named-in-the-book-not-given-a-row"><span class="header-section-number">B.2</span> Named in the book, not given a row</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/appendices/ai-tools.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/appendices/ai-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content" tabindex="-1">
@@ -501,1275 +523,153 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Last checked: Nov 2026</strong> (repository metadata, LICENSE files, and the official pages linked below, read 25 Nov 2026).</p>
 <p>A row is here when the book, an open chapter or glossary pull request, a GitHub issue on this repo, or a current production project names it, and a primary source states the license and platform. Issues are not closed by this page. License is the SPDX identifier, <code>Proprietary</code> when the product is closed and publishes no source license, or <code>Not stated</code> when the repo or site does not say. Platform uses Desktop, Mobile, and SaaS, plus CLI or Self-hosted when that is the accurate form. Empty cells are not guessed.</p>
 <p><a href="https://x.com/dhh">DHH</a> tags are only for tools he says he uses, or that <a href="https://github.com/omacom/omarchy">Omarchy</a> ships. <code>basecamp/omarchy</code> redirects to <code>omacom/omarchy</code>. The manual cited below is <code>manual/17-ai.md</code> on the <code>quattro</code> branch. X posts cited here are his. Full-archive search was not available on this pass; the posts were read from his timeline and from the pages linked in the Note column.</p>
-<section id="inference-engines-and-runners" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="inference-engines-and-runners"><span class="header-section-number">B.1</span> Inference engines and runners</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>CLI, Self-hosted</td>
-<td>GGUF inference on CPU and GPU, pushed 25 Nov 2026</td>
-<td>You bring the weights and the server flags</td>
-<td>In chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/ollama/ollama">Ollama</a></td>
-<td>Model runner</td>
-<td>MIT</td>
-<td>Desktop, CLI</td>
-<td>Installers for macOS, Windows, and Linux; local library plus an API</td>
-<td>README also mentions cloud access; this row is the local app</td>
-<td><a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">Omarchy manual</a> recommends it. Chapter 3 and glossary PR 27</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/vllm-project/vllm">vLLM</a></td>
-<td>Inference engine</td>
-<td>Apache-2.0</td>
-<td>CLI, Self-hosted</td>
-<td>High-throughput OpenAI-compatible serving, pushed 25 Nov 2026</td>
-<td>Built for serving many requests, not a desktop chat app</td>
-<td>Chapter 3 and glossary PR 27</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/sgl-project/sglang">SGLang</a></td>
-<td>Inference engine</td>
-<td>Apache-2.0</td>
-<td>CLI, Self-hosted</td>
-<td>Serving framework for language and multimodal models, pushed 25 Nov 2026</td>
-<td>A server you operate, not a packaged desktop app</td>
-<td>Chapter 3 and glossary PR 27</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/NVIDIA/TensorRT-LLM">TensorRT-LLM</a></td>
-<td>Inference engine</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>NVIDIA’s LLM serving stack; LICENSE text is Apache-2.0</td>
-<td>GitHub’s license detector does not emit an SPDX id</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/huggingface/transformers">Transformers</a></td>
-<td>Inference library</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Reference library for running Hub models, pushed 25 Nov 2026</td>
-<td>Python runtime; slower than a dedicated server</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/ml-explore/mlx-lm">mlx-lm</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Runs LLMs on Apple’s MLX array framework</td>
-<td>Apple silicon path; not a Windows or NVIDIA runner</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/openvinotoolkit/openvino">OpenVINO</a></td>
-<td>Inference engine</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Intel toolkit for CPU, GPU, and NPU inference</td>
-<td>Tied to Intel’s runtime</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/turboderp-org/exllamav3">ExLlamaV3</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Quantized local inference on consumer NVIDIA GPUs</td>
-<td>NVIDIA-only by the repo description</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/ikawrakow/ik_llama.cpp">ik_llama.cpp</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>CLI, Self-hosted</td>
-<td>llama.cpp fork with extra quants, pushed 25 Nov 2026</td>
-<td>A fork: behavior can diverge from upstream llama.cpp</td>
-<td>Chapter 3 and glossary PR 27</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/kvcache-ai/ktransformers">KTransformers</a></td>
-<td>Inference engine</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Heterogeneous CPU/GPU inference and fine-tune optimizations</td>
-<td>Niche offload stack, not a general model library</td>
-<td>Chapter 3 PR 26</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/Niko1221/Strata">Strata</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>Desktop, Self-hosted</td>
-<td>One-click Windows and Linux install; local OpenAI/Anthropic API</td>
-<td>Description limits it to Qwen3.8-Flash-Next on consumer hardware</td>
-<td>Chapter 3, November digest, glossary PR 27</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/jesdga95/basalt">Basalt</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Local engine aimed at NVIDIA Blackwell</td>
-<td>Narrow hardware target</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/warpfront/hipfire">hipfire</a></td>
-<td>Inference engine</td>
-<td>Not stated</td>
-<td>Self-hosted</td>
-<td>RDNA-native Rust engine, pushed 25 Nov 2026</td>
-<td>No LICENSE file at the repository root</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/ashhart/TensorFold">TensorFold</a></td>
-<td>Inference engine</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Metal, CUDA, and Vulkan inference in one project</td>
-<td>Young engine; no desktop product named in the repo description</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/containers/ramalama">RamaLama</a></td>
-<td>Model runner</td>
-<td>MIT</td>
-<td>CLI, Self-hosted</td>
-<td>Container-native model serving, pushed 23 Nov 2026</td>
-<td>Needs Podman or Docker</td>
-<td>Chapter 3 and PR 26</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/LostRuins/koboldcpp">KoboldCpp</a></td>
-<td>Model runner</td>
-<td>AGPL-3.0</td>
-<td>CLI, Desktop</td>
-<td>Single binary with a local UI, pushed 25 Nov 2026</td>
-<td>AGPL duties if you serve a modified build</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/janhq/jan">Jan</a></td>
-<td>Model runner</td>
-<td>Apache-2.0</td>
-<td>Desktop</td>
-<td>Offline desktop app; LICENSE file is Apache-2.0</td>
-<td>GitHub’s detector does not emit an SPDX id</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/oobabooga/textgen">textgen</a></td>
-<td>Model runner</td>
-<td>AGPL-3.0</td>
-<td>Desktop</td>
-<td>Local desktop app with an OpenAI/Anthropic-compatible API</td>
-<td>Last push 17 Aug 2026</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/open-webui/open-webui">Open WebUI</a></td>
-<td>Model UI</td>
-<td>Open WebUI License</td>
-<td>Self-hosted</td>
-<td>Web UI in front of Ollama or an OpenAI-compatible API</td>
-<td>Branding clause: removing the name needs a small deployment, permission, or an enterprise license</td>
-<td>Chapter 3</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/mudler/LocalAI">LocalAI</a></td>
-<td>Inference engine</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>OpenAI-style local server for several model types, pushed 25 Nov 2026</td>
-<td>You operate the server and the hardware</td>
-<td>Production runner found while checking local engines</td>
-</tr>
-<tr class="even">
-<td><a href="https://lmstudio.ai/">LM Studio</a></td>
-<td>Model runner</td>
-<td>Proprietary</td>
-<td>Desktop</td>
-<td>Desktop app terms grant personal and internal business use</td>
-<td>Those terms forbid resale, service-bureau use, and offering the app as SaaS</td>
-<td>Chapter 3. <a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">Omarchy manual</a> says to start here for local models</td>
-</tr>
-<tr class="odd">
-<td><a href="https://fireworks.ai/">Fireworks</a></td>
-<td>Hosted inference</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Token API he uses for open-weight models</td>
-<td>License of the service is not stated on the sources read here</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">Lex #501 transcript</a>). Omarchy’s agents panel can store a Fireworks key for OpenCode</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="agentic-development-environments" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="agentic-development-environments"><span class="header-section-number">B.2</span> Agentic development environments</h2>
-<p>These apps run coding agents in parallel. They do not ship a model.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/pingdotgg/t3code">T3 Code</a></td>
-<td>ADE</td>
-<td>MIT</td>
-<td>Desktop, Mobile, SaaS</td>
-<td>README links a download, iOS, Android, and a web app</td>
-<td>Drives agents you already have; it is not a model</td>
-<td>Chapter 4 PR 28. Shipped in Omarchy (<a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">manual</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/herdrdev/herdr">Herdr</a></td>
-<td>ADE</td>
-<td>Apache-2.0</td>
-<td>CLI, Desktop</td>
-<td>Agent runtime, pushed 19 Nov 2026; Omarchy ships the CLI and the desktop app</td>
-<td>Two install paths (package CLI and the app’s own installer)</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">Lex #501 transcript</a>). Chapter 4 PR 28. Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/stablyai/orca">Orca</a></td>
-<td>ADE</td>
-<td>MIT</td>
-<td>Desktop, Mobile, Self-hosted</td>
-<td>Repo description: desktop, mobile, and remote runtimes for a fleet of agents</td>
-<td>No model of its own; you bring subscriptions</td>
-<td>Chapter 4 PR 28</td>
-</tr>
-<tr class="even">
-<td><a href="https://www.conductor.build/">Conductor</a></td>
-<td>ADE</td>
-<td>Not stated</td>
-<td>Desktop, Mobile, SaaS</td>
-<td>Site: desktop, iOS, and an API; cloud sandboxes for Claude Code, Codex, Cursor, and OpenCode</td>
-<td>Homepage states no license; product is “Conductor from Meta”</td>
-<td>Chapter 4 PR 28. Changelog 0.100.0 is dated 24 Nov 2026</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/nimbalyst/nimbalyst">Nimbalyst</a></td>
-<td>ADE</td>
-<td>MIT</td>
-<td>Desktop, Mobile</td>
-<td>README: desktop for macOS, Windows, and Linux, plus an iOS companion</td>
-<td>Sessions run Codex, Claude Code, OpenCode, or another agent you attach</td>
-<td>Chapter 4 PR 28</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/smtg-ai/claude-squad">Claude Squad</a></td>
-<td>ADE</td>
-<td>AGPL-3.0</td>
-<td>CLI</td>
-<td>Terminal app for several local agents in separate workspaces</td>
-<td>README requires a local terminal workflow</td>
-<td>Chapter 4 PR 28</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/BloopAI/vibe-kanban">Vibe Kanban</a></td>
-<td>ADE</td>
-<td>Apache-2.0</td>
-<td>Desktop, Self-hosted</td>
-<td><code>npx vibe-kanban</code> locally; README also documents self-hosting</td>
-<td>Cloud API settings exist; this pass did not confirm a public hosted plan’s terms</td>
-<td>Chapter 4 PR 28. Pushed 15 Nov 2026</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/imbue-ai/sculptor">Sculptor</a></td>
-<td>ADE</td>
-<td>MIT</td>
-<td>Desktop</td>
-<td>README: desktop app for parallel coding agents</td>
-<td>README says to treat it as an experimental research preview</td>
-<td>Chapter 4 PR 28</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/agent0ai/spynel">SpyNEL</a></td>
-<td>Orchestrator</td>
-<td>MIT</td>
-<td>Not stated</td>
-<td>One chat that drives other harnesses</td>
-<td>Repository description does not name Desktop, Mobile, SaaS, or CLI</td>
-<td>Chapter 4 and October digest</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/eigent-ai/eigent">Eigent</a></td>
-<td>ADE</td>
-<td>Apache-2.0</td>
-<td>Desktop</td>
-<td>Description: open-source cowork desktop</td>
-<td>Pushed 23 Nov 2026; still a young desktop</td>
-<td>Chapter 4 harness table</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/OpenHands/OpenHands">OpenHands</a></td>
-<td>ADE</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>README: self-hosted control center for OpenHands and other ACP agents, including local and remote backends</td>
-<td>The repo’s product name on the README is Agent Canvas, not the old OpenDevin app</td>
-<td>Chapter 4</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="coding-agents-and-harnesses" class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="coding-agents-and-harnesses"><span class="header-section-number">B.3</span> Coding agents and harnesses</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://code.claude.com/docs/en/overview">Claude Code</a></td>
-<td>Coding agent</td>
-<td>Proprietary</td>
-<td>CLI, Desktop, SaaS</td>
-<td>Official docs: terminal, IDE, desktop app, and browser</td>
-<td><code>anthropics/claude-code</code> has no LICENSE file</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>; he drives with it and uses Agent View). Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/openai/codex">Codex</a></td>
-<td>Coding agent</td>
-<td>Apache-2.0</td>
-<td>CLI, Desktop, SaaS</td>
-<td>README: local CLI, <code>codex app</code>, and Codex Web at chatgpt.com/codex</td>
-<td>An OpenAI maintainer wrote that the desktop app is not open source</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>; review pass is Codex xHigh). January 2026 post also names “Codex 5” inside OpenCode (<a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">blog</a>). Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/anomalyco/opencode">OpenCode</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Open-source coding agent, pushed 25 Nov 2026</td>
-<td>Repository description does not list a desktop or phone app</td>
-<td>Used by DHH (<a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">blog</a> and <a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>; his harness for open models). Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI, Desktop</td>
-<td>Personal agent that keeps memory; Omarchy installs the desktop app and points <code>hermes</code> at it</td>
-<td>Omarchy’s copy updates with <code>hermes update</code>, not the distro package</td>
-<td>Chapter 4. Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/aaif-goose/goose">goose</a></td>
-<td>Coding agent</td>
-<td>Apache-2.0</td>
-<td>CLI</td>
-<td>Apache-2.0 agent under the Agentic AI Foundation; README badges a CLI package</td>
-<td>Desktop app not stated in the README text read here</td>
-<td>Chapter 4 and October digest</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/openclaw/openclaw">OpenClaw</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI, Self-hosted</td>
-<td>Gateway plus a terminal UI; Omarchy opens the control UI as a local web app</td>
-<td>Removing it asks whether to keep <code>~/.openclaw</code>, which holds chats and credentials</td>
-<td>Chapter 4. Shipped in Omarchy. Named, not claimed as his daily driver, in the <a href="https://world.hey.com/dhh/basecamp-becomes-agent-accessible-3ae6b949">Basecamp post</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/cline/cline">Cline</a></td>
-<td>Coding agent</td>
-<td>Apache-2.0</td>
-<td>CLI, Desktop</td>
-<td>Description: SDK, IDE extension, or CLI</td>
-<td>Pushed 23 Nov 2026</td>
-<td>Chapter 4</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/agent0ai/agent-zero">Agent Zero</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>Not stated</td>
-<td>Framework repo; LICENSE file is MIT even though GitHub’s detector has no SPDX id</td>
-<td>Description does not state Desktop, Mobile, or SaaS</td>
-<td>Chapter 4 and October digest</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/earendil-works/pi">Pi</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Description: agent toolkit with a TUI and a coding CLI</td>
-<td>Omarchy opens local models in Pi even when another agent is the default</td>
-<td>Shipped in Omarchy (<a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">manual</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></td>
-<td>Coding agent</td>
-<td>Apache-2.0</td>
-<td>CLI</td>
-<td>Terminal coding agent, pushed 25 Nov 2026</td>
-<td>Tuned around Alibaba’s models</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/MoonshotAI/kimi-code">Kimi Code</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Moonshot’s coding CLI, pushed 25 Nov 2026</td>
-<td>He named Kimi K3 as a model inside OpenCode, not this CLI as his driver</td>
-<td>Shipped in Omarchy. Model use is in the models table</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/Kilo-Org/kilocode">Kilo Code</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Open-source coding agent, pushed 25 Nov 2026</td>
-<td>Omarchy launches it as <code>kilo</code>; other surfaces are not stated in the repo description</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/charmbracelet/crush">Crush</a></td>
-<td>Coding agent</td>
-<td>FSL-1.1-MIT</td>
-<td>CLI</td>
-<td>Charm’s terminal coding agent, pushed 25 Nov 2026</td>
-<td>Functional Source License, not MIT, until the future-license date in that file</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/mistralai/mistral-vibe">Mistral Vibe</a></td>
-<td>Coding agent</td>
-<td>Apache-2.0</td>
-<td>CLI</td>
-<td>Description: minimal CLI coding agent, pushed 24 Nov 2026</td>
-<td>Omarchy’s usage panel can show it; the launcher table does not list a <code>vibe</code> command</td>
-<td>Production CLI, not a DHH-tagged tool</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/features/copilot">GitHub Copilot</a></td>
-<td>Coding agent</td>
-<td>Proprietary</td>
-<td>CLI, SaaS</td>
-<td>He uses Copilot review on pull requests; Omarchy ships the <code>copilot</code> CLI</td>
-<td><code>github/copilot-cli</code> has no SPDX id</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>). Shipped in Omarchy. January 2026 post says editor autocomplete, including Copilot, left him cold (<a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">blog</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://cursor.com/">Cursor</a></td>
-<td>Coding agent</td>
-<td>Proprietary</td>
-<td>CLI</td>
-<td><code>cursor/cursor</code> publishes no license; Omarchy ships <code>cursor-agent</code></td>
-<td>Desktop and cloud surfaces are not restated from a Cursor docs page on this pass</td>
-<td>Shipped in Omarchy. Editor autocomplete left him cold in January 2026; that post is not a claim he quit the CLI</td>
-</tr>
-<tr class="odd">
-<td><a href="https://x.ai/">Grok Build</a></td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Omarchy installs a <code>grok</code> CLI through mise and warns against a second curl installer</td>
-<td>No LICENSE file was found for the CLI</td>
-<td>Shipped in Omarchy. He uses the Grok model (see models), including a review pass (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/kortix-ai/CompanyOS">Kortix CompanyOS</a></td>
-<td>Agent harness</td>
-<td>Elastic-2.0</td>
-<td>Self-hosted, SaaS</td>
-<td>README: agents, skills, and memory in a git repo, with a cloud computer per agent</td>
-<td>Elastic-2.0 is not an OSI license. <code>kortix-ai/suna</code> now resolves here. <code>kortix-ai/kortix</code> is 404</td>
-<td>Issue #14 and chapter 4</td>
-</tr>
-</tbody>
-</table>
-<section id="omarchy-launchers-whose-license-was-not-in-a-public-license-file" class="level3" data-number="B.3.1">
-<h3 data-number="B.3.1" class="anchored" data-anchor-id="omarchy-launchers-whose-license-was-not-in-a-public-license-file"><span class="header-section-number">B.3.1</span> Omarchy launchers whose license was not in a public LICENSE file</h3>
-<p>The <a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">Omarchy manual</a> installs each of these as a terminal command. Platform is CLI because that page says so. License is <code>Not stated</code> because this pass did not find an SPDX identifier.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://antigravity.google/">Antigravity CLI</a></td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Omarchy command <code>agy</code>; shortcut <code>ca</code></td>
-<td>License not stated in the manual</td>
-<td>Shipped in Omarchy. His 23 Nov 2026 posts are about Gemini 4 Neon, not a sentence that names this binary</td>
-</tr>
-<tr class="even">
-<td>Amp</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI, Desktop</td>
-<td>Manual: <code>amp</code> command and Amp Desktop under Install, AI</td>
-<td>No upstream license read</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td>Command Code</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual command <code>commandcode</code></td>
-<td>Upstream site and license not confirmed</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td>Freebuff</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual: Codebuff’s free, ad-supported agent, command <code>freebuff</code></td>
-<td>Manual says it takes no starting prompt</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://devin.ai/">Devin CLI</a></td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual command <code>devin</code>, from Cognition</td>
-<td>License not stated</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td>Kiro CLI</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual command <code>kiro-cli</code></td>
-<td>License not stated</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td>MiniMax Code</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual command <code>mcode</code></td>
-<td>Manual: interactive sessions have no unattended permission mode</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td>Muse Code</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual command <code>muse</code>, Meta’s coding agent</td>
-<td>License not stated</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td>Oh My Pi</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual command <code>omp</code></td>
-<td>License not stated</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="even">
-<td>Ori</td>
-<td>Coding agent</td>
-<td>Not stated</td>
-<td>CLI</td>
-<td>Manual: <code>ori</code> runs other harnesses against OpenRouter, and <code>ori code</code> is its own agent</td>
-<td>License not stated</td>
-<td>Shipped in Omarchy</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="not-a-stable-release-yet" class="level3" data-number="B.3.2">
-<h3 data-number="B.3.2" class="anchored" data-anchor-id="not-a-stable-release-yet"><span class="header-section-number">B.3.2</span> Not a stable release yet</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/deepseek-ai/deepseek-harness">DeepSeek Harness</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Plugin-style harness, pushed 22 Nov 2026</td>
-<td>Newest GitHub releases that day are prerelease: <code>dsh-v0.2.3-alpha.2</code> and, before it, <code>dsh-v0.2.2-rc.5</code></td>
-<td>Shipped in Omarchy as <code>dsh</code>. Manual says official API use uploads session logs unless you turn that off</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/google-research/harness2">Harness²</a></td>
-<td>Coding agent</td>
-<td>Apache-2.0</td>
-<td>CLI, Self-hosted</td>
-<td>Google Research harness for the Harness² paper; README shows a <code>harn</code> install path</td>
-<td>No GitHub release or tag. Last push 2 Nov 2026</td>
-<td>Issue #7. Paper: <a href="https://arxiv.org/abs/2610.14224">arXiv:2610.14224</a>. Project page: <a href="https://harness2.github.io/">harness2.github.io</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/deepseek-ai/dsh-superagent-prototype">dsh-superagent</a></td>
-<td>Coding agent</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>README: a proactive coding agent for one GitHub repo, as a DeepSeek Harness bundle</td>
-<td>README says research prototype, not an official product and not production-ready</td>
-<td>Issue #16 and the November digest</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="agent-frameworks-and-sdks" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="agent-frameworks-and-sdks"><span class="header-section-number">B.4</span> Agent frameworks and SDKs</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/langchain-ai/langchain">LangChain</a></td>
-<td>Agent framework</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Agent-engineering library, pushed 25 Nov 2026</td>
-<td>Higher-level wrapper around model and tool calls</td>
-<td>Issue #17</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td>
-<td>Agent framework</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Library for stateful agent graphs, pushed 25 Nov 2026</td>
-<td>A library, not a coding product you install and chat with</td>
-<td>Issue #17</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/langchain-ai/deepagents">Deep Agents</a></td>
-<td>Agent framework</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>README calls it a batteries-included harness on top of LangGraph, pushed 25 Nov 2026</td>
-<td>A Python package you embed, not a desktop app</td>
-<td>Issue #17</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></td>
-<td>Agent framework</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Role-based multi-agent framework, pushed 25 Nov 2026</td>
-<td>You write the orchestration</td>
-<td>Production SDK</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/pydantic/pydantic-ai">Pydantic AI</a></td>
-<td>Agent framework</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Typed Python agent library, pushed 25 Nov 2026</td>
-<td>Python-only</td>
-<td>Production SDK</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/huggingface/smolagents">smolagents</a></td>
-<td>Agent framework</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Small library for agents that write code actions</td>
-<td>Thin by design</td>
-<td>Production SDK</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a></td>
-<td>Agent framework</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Python SDK for multi-agent workflows, pushed 25 Nov 2026</td>
-<td>Separate from the Codex CLI</td>
-<td>Production SDK</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/google/adk-python">Google ADK</a></td>
-<td>Agent framework</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Code-first Python agent toolkit, pushed 25 Nov 2026</td>
-<td>Python package, not the Antigravity app</td>
-<td>Production SDK</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/mastra-ai/mastra">Mastra</a></td>
-<td>Agent framework</td>
-<td>Not stated</td>
-<td>Self-hosted</td>
-<td>TypeScript agent framework, pushed 25 Nov 2026</td>
-<td>LICENSE.md splits terms; an <code>ee/</code> tree is called out separately</td>
-<td>Not a single SPDX id</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="mcp-skills-and-agent-facing-clis" class="level2" data-number="B.5">
-<h2 data-number="B.5" class="anchored" data-anchor-id="mcp-skills-and-agent-facing-clis"><span class="header-section-number">B.5</span> MCP, skills, and agent-facing CLIs</h2>
-<p>The Model Context Protocol is the wiring standard. These rows are programs, not the spec.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/PrefectHQ/fastmcp">FastMCP</a></td>
-<td>MCP library</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Python library for MCP servers and clients</td>
-<td><code>jlowin/fastmcp</code> now resolves to this PrefectHQ repo</td>
-<td>Production library</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/plastic-labs/honcho">Honcho</a></td>
-<td>Agent memory</td>
-<td>AGPL-3.0</td>
-<td>Self-hosted</td>
-<td>Memory library for stateful agents, pushed 24 Nov 2026</td>
-<td>AGPL if you serve a modified copy</td>
-<td>October digest</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/agent0ai/dox">DOX</a></td>
-<td>Project context</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>AGENTS.md hierarchy for coding agents</td>
-<td>Last push 1 Sep 2026</td>
-<td>Chapter 4, October digest, and issue #9</td>
-</tr>
-<tr class="even">
-<td><a href="https://skillsync.com/">Skillsync</a></td>
-<td>Skill library</td>
-<td>Proprietary</td>
-<td>SaaS</td>
-<td>Hosted skill library with an MCP connector at app.skillsync.com/mcp for Claude, ChatGPT, and Cursor</td>
-<td>Terms (23 Nov 2026): skills are not reviewed before publish, and selling is by invitation</td>
-<td>Issue #24</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/basecamp/basecamp-cli">Basecamp CLI</a></td>
-<td>Agent CLI</td>
-<td>MIT</td>
-<td>CLI, SaaS</td>
-<td>Official CLI plus agent skills; the service it calls is Basecamp</td>
-<td>Needs a Basecamp account</td>
-<td>Used by DHH (<a href="https://x.com/dhh/status/2125498388385022313">post</a>, 25 Nov 2026: he drives much of his Basecamp use with agents). Shipped by 37signals (<a href="https://world.hey.com/dhh/basecamp-becomes-agent-accessible-3ae6b949">blog</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/basecamp/hey-cli">HEY CLI</a></td>
-<td>Agent CLI</td>
-<td>MIT</td>
-<td>CLI, SaaS</td>
-<td>CLI and TUI for HEY, including <code>hey setup</code> for Claude Code and Codex</td>
-<td>Needs a HEY account</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>: an Omarchy bot emails him through the HEY CLI)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="evals-and-observability" class="level2" data-number="B.6">
-<h2 data-number="B.6" class="anchored" data-anchor-id="evals-and-observability"><span class="header-section-number">B.6</span> Evals and observability</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/promptfoo/promptfoo">promptfoo</a></td>
-<td>Evals</td>
-<td>MIT</td>
-<td>CLI, Self-hosted</td>
-<td>Prompt, agent, and RAG tests, pushed 25 Nov 2026</td>
-<td>You supply the cases</td>
-<td>Production eval runner</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/confident-ai/deepeval">DeepEval</a></td>
-<td>Evals</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>LLM evaluation framework, pushed 25 Nov 2026</td>
-<td>A library, not a hosted board</td>
-<td>Production eval library</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/UKGovernmentBEIS/inspect_ai">Inspect</a></td>
-<td>Evals</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>UK AISI evaluation framework, pushed 25 Nov 2026</td>
-<td>You run the evals</td>
-<td>Production eval framework</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/SWE-bench/SWE-bench">SWE-bench</a></td>
-<td>Evals</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Real GitHub-issue benchmark harness</td>
-<td>Last push 18 Sep 2026</td>
-<td>Chapter 2 names the benchmark</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/Arize-ai/phoenix">Phoenix</a></td>
-<td>Observability</td>
-<td>Elastic-2.0</td>
-<td>Self-hosted</td>
-<td>Tracing and evaluation app, pushed 25 Nov 2026</td>
-<td>Elastic License 2.0, not OSI open source</td>
-<td>Production observability</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/langfuse/langfuse">Langfuse</a></td>
-<td>Observability</td>
-<td>Not stated</td>
-<td>Self-hosted</td>
-<td>Tracing, evals, and prompt management, pushed 25 Nov 2026</td>
-<td>LICENSE splits enterprise paths out of the main grant</td>
-<td>Not a single SPDX id</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/langchain-ai/langsmith-python">LangSmith</a></td>
-<td>Observability</td>
-<td>MIT</td>
-<td>Self-hosted, SaaS</td>
-<td>Python and JavaScript SDKs, both pushed 25 Nov 2026; docs live at docs.smith.langchain.com</td>
-<td>The combined <code>langsmith-sdk</code> repo was archived on 16 Oct 2026</td>
-<td>Issue #17. SDK license is MIT; hosted-product terms were not read</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="sandboxes-and-agent-runtimes" class="level2" data-number="B.7">
-<h2 data-number="B.7" class="anchored" data-anchor-id="sandboxes-and-agent-runtimes"><span class="header-section-number">B.7</span> Sandboxes and agent runtimes</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/docker/cli">Docker CLI</a></td>
-<td>Sandbox</td>
-<td>Apache-2.0</td>
-<td>CLI, Self-hosted</td>
-<td>The usual container boundary for an agent shell</td>
-<td>Isolation is only as tight as the daemon and mounts</td>
-<td>Chapter 4</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/containers/podman">Podman</a></td>
-<td>Sandbox</td>
-<td>Apache-2.0</td>
-<td>CLI, Self-hosted</td>
-<td>Rootless containers; Omarchy runs its local models here</td>
-<td>Manual: a model holds most of the machine’s memory while it runs</td>
-<td>Shipped in Omarchy (<a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">manual</a>)</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/e2b-dev/E2B">E2B</a></td>
-<td>Sandbox</td>
-<td>Apache-2.0</td>
-<td>Self-hosted, SaaS</td>
-<td>Secure environments for agents, pushed 25 Nov 2026</td>
-<td>Hosted and self-hosted are different operating jobs</td>
-<td>Chapter 4 and October digest</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/ai-openshell/openshell">OpenShell</a></td>
-<td>Sandbox</td>
-<td>Apache-2.0</td>
-<td>Self-hosted</td>
-<td>Safe runtime for autonomous agents, pushed 25 Nov 2026</td>
-<td>A runtime you deploy, not a chat app</td>
-<td>October digest and issue #4. <code>NVIDIA/OpenShell</code> resolves to <code>ai-openshell/openshell</code></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/NVIDIA/NemoClaw">NemoClaw</a></td>
-<td>Sandbox</td>
-<td>Apache-2.0</td>
-<td>CLI, Self-hosted</td>
-<td>NVIDIA packaging for Hermes and other agents on OpenShell</td>
-<td>Opinionated about that sandbox</td>
-<td>November digest and issue #6</td>
-</tr>
-<tr class="even">
-<td><a href="https://www.orgo.ai/">Orgo</a></td>
-<td>Sandbox</td>
-<td>Proprietary</td>
-<td>SaaS</td>
-<td>Cloud Linux and Windows desktops for agents, with an API and a hosted MCP server</td>
-<td>Paid plans; <code>orgo.dev</code> did not answer on this pass</td>
-<td>Issue #12. The November digest links orgo.dev</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/agent0ai/tuxee">Tuxee</a></td>
-<td>Sandbox</td>
-<td>MIT</td>
-<td>Self-hosted</td>
-<td>Small Linux environment for servers and agents; LICENSE file is MIT</td>
-<td>GitHub’s detector has no SPDX id</td>
-<td>November digest</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="terminal-tools-in-dhhs-workflow" class="level2" data-number="B.8">
-<h2 data-number="B.8" class="anchored" data-anchor-id="terminal-tools-in-dhhs-workflow"><span class="header-section-number">B.8</span> Terminal tools in DHH’s workflow</h2>
-<p>These are not models. He names them as the way he watches agents.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/ghostty-org/ghostty">Ghostty</a></td>
-<td>Terminal</td>
-<td>MIT</td>
-<td>Desktop</td>
-<td>GPU terminal with native UI on each platform</td>
-<td>A terminal, not an agent</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/tmux/tmux">tmux</a></td>
-<td>Terminal</td>
-<td>ISC</td>
-<td>CLI</td>
-<td>Sessions and panes; he started parallel agents here</td>
-<td>He says it was not enough once agents spanned machines</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>). Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/neovim/neovim">Neovim</a></td>
-<td>Editor</td>
-<td>Apache-2.0</td>
-<td>CLI</td>
-<td>He uses it as a project browser while agents edit</td>
-<td>LICENSE keeps the Vim license on parts that arrived under it</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/jesseduffield/lazygit">lazygit</a></td>
-<td>Git UI</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Terminal UI he launches from Neovim to read the change log</td>
-<td>Shows git state; it does not run the agent</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/jdx/mise">mise</a></td>
-<td>Tool installer</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>He uses it to install agent CLIs that update many times a day</td>
-<td>Not an agent</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>). Omarchy installs most agents through it</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/modem-dev/hunk">Hunk</a></td>
-<td>Diff reviewer</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Review-first terminal diffs with an agent skill</td>
-<td>He said he still wants surrounding files, so Neovim stays in the loop</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>). His fork <a href="https://github.com/dhh/hunk">dhh/hunk</a> points at this project</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="desktop-chat-apps-omarchy-installs" class="level2" data-number="B.9">
-<h2 data-number="B.9" class="anchored" data-anchor-id="desktop-chat-apps-omarchy-installs"><span class="header-section-number">B.9</span> Desktop chat apps Omarchy installs</h2>
-<p>The manual’s Install, AI menu names these graphical apps. License is <code>Not stated</code> unless a row above already covers the same product (Claude, Hermes, Herdr, Amp, T3 Code, OpenClaw).</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ChatGPT desktop</td>
-<td>Chat app</td>
-<td>Not stated</td>
-<td>Desktop</td>
-<td>Omarchy Install, AI entry</td>
-<td>License not stated in the manual</td>
-<td>Shipped in Omarchy. Distinct from the Codex CLI</td>
-</tr>
-<tr class="even">
-<td>Perplexity desktop</td>
-<td>Chat app</td>
-<td>Not stated</td>
-<td>Desktop</td>
-<td>Omarchy Install, AI entry</td>
-<td>License not stated in the manual</td>
-<td>Shipped in Omarchy</td>
-</tr>
-<tr class="odd">
-<td>Grok Bot</td>
-<td>Chat app</td>
-<td>Not stated</td>
-<td>Desktop</td>
-<td>Manual: desktop chat app, separate from the <code>grok</code> coding CLI</td>
-<td>License not stated in the manual</td>
-<td>Shipped in Omarchy. He suggested pairing a laptop with a Grok bot for remote work (<a href="https://x.com/dhh/status/2110503544063488177">post</a>, 14 Oct 2026)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="models-he-says-he-runs" class="level2" data-number="B.10">
-<h2 data-number="B.10" class="anchored" data-anchor-id="models-he-says-he-runs"><span class="header-section-number">B.10</span> Models he says he runs</h2>
-<p>Weights are not harnesses. License is <code>Not stated</code> because this pass did not open a model card or a weights LICENSE. Platform is SaaS where he describes a subscription or a token API.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://claude.com/">Claude Opus and Fable</a></td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>On 23 Nov 2026 he ranked Opus 5.5 first, ahead of Gemini 4 Neon</td>
-<td>A long Fable job burned a Max window and fell through to Opus 5</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>, <a href="https://x.com/dhh/status/2124863854828233196">post</a>, <a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">January blog</a> for Opus 4.5)</td>
-</tr>
-<tr class="even">
-<td><a href="https://openai.com/">GPT Sol</a></td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Finished the same Rust translation; on 13 Oct 2026 he posted it within 5 points of Opus at under a tenth of the token cost</td>
-<td>GPT Luna did not finish that translation and tried to wrap an existing implementation</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>, <a href="https://x.com/dhh/status/2110148376755097938">post</a>)</td>
-</tr>
-<tr class="odd">
-<td><a href="https://deepmind.google/">Gemini 4 Neon</a></td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>He ran it across six computers in one day and did not exhaust the session window</td>
-<td>Same-day post: the harness is rough and lacks Claude’s agent overview</td>
-<td>Used by DHH (<a href="https://x.com/dhh/status/2124860839572488538">post</a>, <a href="https://x.com/dhh/status/2124949501534171477">post</a>)</td>
-</tr>
-<tr class="even">
-<td>Gemini 3</td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Named in January 2026 among models he ran in OpenCode</td>
-<td>No November 2026 post read here says he still uses Gemini 3</td>
-<td>Used by DHH (<a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">blog</a>)</td>
-</tr>
-<tr class="odd">
-<td>Grok 4.6</td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Completed the Rust translation he also gave Fable and Sol</td>
-<td>He said Grok 4.5 felt too far behind to keep using</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-<tr class="even">
-<td>Kimi K3</td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Open model he runs through OpenCode on Fireworks</td>
-<td>He said that translation run took a long time</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-<tr class="odd">
-<td>MiniMax M2.1</td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Named in January 2026 as an open-weight model he put to work in OpenCode</td>
-<td>The January post does not say he still uses it in November</td>
-<td>Used by DHH (<a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">blog</a>)</td>
-</tr>
-<tr class="even">
-<td>GLM-4.7</td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>Named in that same January list</td>
-<td>No later post read here repeats it</td>
-<td>Used by DHH (<a href="https://world.hey.com/dhh/promoting-ai-agents-3ee04945">blog</a>)</td>
-</tr>
-<tr class="odd">
-<td>DeepSeek V4</td>
-<td>Model</td>
-<td>Not stated</td>
-<td>SaaS</td>
-<td>V4 Pro finished the Rust translation</td>
-<td>V4 Flash failed it, in the same way Luna did</td>
-<td>Used by DHH (<a href="https://lexfridman.com/dhh-2-transcript/">transcript</a>)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="local-machine-and-other-issue-tools" class="level2" data-number="B.11">
-<h2 data-number="B.11" class="anchored" data-anchor-id="local-machine-and-other-issue-tools"><span class="header-section-number">B.11</span> Local machine and other issue tools</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Category</th>
-<th>License</th>
-<th>Platform</th>
-<th>Strength</th>
-<th>Limitation</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/shanselman/gputaskman">gputaskman</a></td>
-<td>GPU monitor</td>
-<td>MIT</td>
-<td>CLI</td>
-<td>Per-process VRAM and LLM buffer breakdown on Windows, Linux, WSL, and macOS</td>
-<td>README calls it early experimental software; model breakdowns are estimates</td>
-<td>Issue #23. Release v0.4.5 is dated 21 Nov 2026</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/storytold/craft-launcher">ArtCraft Launcher</a></td>
-<td>App launcher</td>
-<td>Apache-2.0</td>
-<td>Desktop</td>
-<td>Installs and opens the Craft app suite. Stable release v0.20.1 on 25 Nov 2026</td>
-<td>A creative-suite launcher, not a coding agent</td>
-<td>Issue #22. The issue link is the older tag v0.19.2. Site: <a href="https://getartcraft.com/">getartcraft.com</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="retired-quiet-or-archived" class="level2" data-number="B.12">
-<h2 data-number="B.12" class="anchored" data-anchor-id="retired-quiet-or-archived"><span class="header-section-number">B.12</span> Retired, quiet, or archived</h2>
-<p>Not in the tables above.</p>
+<p>The rows live in <a href="ai-tools.csv"><code>ai-tools.csv</code></a>. On the HTML site, click a column heading to sort. Search matches every column. Category and License match the whole cell. Platform matches one listed value, so Desktop also matches <code>Desktop, CLI</code>. PDF and EPUB, when those formats are turned on, print the same rows as static tables.</p>
+<p>A few groups need a sentence of context:</p>
+<ul>
+<li>Agentic development environments run coding agents in parallel. They do not ship a model.</li>
+<li>Omarchy launchers with no public LICENSE file are terminal commands from the <a href="https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md">Omarchy manual</a>. License stays <code>Not stated</code>.</li>
+<li>Harness² and dsh-superagent are not stable releases. DeepSeek Harness’s newest tags are prerelease.</li>
+<li>MCP rows are programs. The protocol itself is not a row.</li>
+<li>The terminal tools are how DHH watches agents. The model rows are weights he says he runs, not harnesses.</li>
+<li>Desktop chat apps are the Omarchy Install, AI menu. Claude, Hermes, Herdr, Amp, T3 Code, and OpenClaw are already rows above.</li>
+</ul>
+<style>
+form.oi-3a86ea-table td {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  vertical-align: top;
+}
+form.oi-3a86ea-table thead th {
+  background: var(--bs-body-bg, #fff);
+  cursor: pointer;
+  white-space: nowrap;
+}
+form.oi-3a86ea-table tr > :first-child {
+  display: none;
+  width: 0;
+  padding: 0;
+  border: 0;
+}
+</style>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="50" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 49;"><span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"ai-tools.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">false</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="56" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 55;"><span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> [<span class="st">"All"</span>]<span class="op">.</span><span class="fu">concat</span>([<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(tools<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Category</span>))]<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="fu">localeCompare</span>(b)))</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>licenses <span class="op">=</span> [<span class="st">"All"</span>]<span class="op">.</span><span class="fu">concat</span>([<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(tools<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">License</span>))]<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="fu">localeCompare</span>(b)))</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>platforms <span class="op">=</span> [<span class="st">"All"</span>]<span class="op">.</span><span class="fu">concat</span>([<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(tools<span class="op">.</span><span class="fu">flatMap</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Platform</span><span class="op">.</span><span class="fu">split</span>(<span class="st">","</span>)<span class="op">.</span><span class="fu">map</span>((s) <span class="kw">=&gt;</span> s<span class="op">.</span><span class="fu">trim</span>())<span class="op">.</span><span class="fu">filter</span>(<span class="bu">Boolean</span>)))]<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="fu">localeCompare</span>(b)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="62" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 61;"><span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>viewof filters <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>({</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>  <span class="dt">query</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">text</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"Search"</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Name, note, strength, limitation"</span>})<span class="op">,</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>  <span class="dt">category</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(categories<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Category"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>})<span class="op">,</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>  <span class="dt">license</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(licenses<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"License"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>})<span class="op">,</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>  <span class="dt">platform</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>(platforms<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Platform"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All"</span>})</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="72" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 71;"><span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> tools<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> query <span class="op">=</span> (filters<span class="op">.</span><span class="at">query</span> <span class="op">||</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filters<span class="op">.</span><span class="at">category</span> <span class="op">!==</span> <span class="st">"All"</span> <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Category</span> <span class="op">!==</span> filters<span class="op">.</span><span class="at">category</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filters<span class="op">.</span><span class="at">license</span> <span class="op">!==</span> <span class="st">"All"</span> <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">License</span> <span class="op">!==</span> filters<span class="op">.</span><span class="at">license</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (filters<span class="op">.</span><span class="at">platform</span> <span class="op">!==</span> <span class="st">"All"</span>) {</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> parts <span class="op">=</span> d<span class="op">.</span><span class="at">Platform</span><span class="op">.</span><span class="fu">split</span>(<span class="st">","</span>)<span class="op">.</span><span class="fu">map</span>((s) <span class="kw">=&gt;</span> s<span class="op">.</span><span class="fu">trim</span>())<span class="op">;</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>parts<span class="op">.</span><span class="fu">includes</span>(filters<span class="op">.</span><span class="at">platform</span>)) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>query) <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> blob <span class="op">=</span> [d<span class="op">.</span><span class="at">Tool</span><span class="op">,</span> d<span class="op">.</span><span class="at">Section</span><span class="op">,</span> d<span class="op">.</span><span class="at">Category</span><span class="op">,</span> d<span class="op">.</span><span class="at">License</span><span class="op">,</span> d<span class="op">.</span><span class="at">Platform</span><span class="op">,</span> d<span class="op">.</span><span class="at">Strength</span><span class="op">,</span> d<span class="op">.</span><span class="at">Limitation</span><span class="op">,</span> d<span class="op">.</span><span class="at">Note</span>]<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> blob<span class="op">.</span><span class="fu">includes</span>(query)<span class="op">;</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="88" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 87;"><span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p&gt;&lt;strong&gt;</span><span class="sc">${</span>filtered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">&lt;/strong&gt; of </span><span class="sc">${</span>tools<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> tools&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="94" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 93;"><span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">noteHtml</span>(text) {</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> re <span class="op">=</span> <span class="ss">/</span><span class="sc">\[([^\]]+)\]\((</span><span class="ss">https</span><span class="sc">?</span><span class="ss">:</span><span class="sc">\/\/[^)\s]+)\)</span><span class="ss">/g</span><span class="op">;</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> out <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> last <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> match<span class="op">;</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> ((match <span class="op">=</span> re<span class="op">.</span><span class="fu">exec</span>(text)) <span class="op">!==</span> <span class="kw">null</span>) {</span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (match<span class="op">.</span><span class="at">index</span> <span class="op">&gt;</span> last) out<span class="op">.</span><span class="fu">push</span>(text<span class="op">.</span><span class="fu">slice</span>(last<span class="op">,</span> match<span class="op">.</span><span class="at">index</span>))<span class="op">;</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>    out<span class="op">.</span><span class="fu">push</span>(<span class="fu">html</span><span class="vs">`&lt;a href=</span><span class="sc">${</span>match[<span class="dv">2</span>]<span class="sc">}</span><span class="vs">&gt;</span><span class="sc">${</span>match[<span class="dv">1</span>]<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span>)<span class="op">;</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>    last <span class="op">=</span> match<span class="op">.</span><span class="at">index</span> <span class="op">+</span> match[<span class="dv">0</span>]<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (last <span class="op">&lt;</span> text<span class="op">.</span><span class="at">length</span>) out<span class="op">.</span><span class="fu">push</span>(text<span class="op">.</span><span class="fu">slice</span>(last))<span class="op">;</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;span&gt;</span><span class="sc">${</span>out<span class="sc">}</span><span class="vs">&lt;/span&gt;`</span><span class="op">;</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(filtered<span class="op">,</span> {</span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="st">"70vh"</span><span class="op">,</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> <span class="st">"Tool"</span><span class="op">,</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="dt">reverse</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>  <span class="dt">layout</span><span class="op">:</span> <span class="st">"auto"</span><span class="op">,</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>  <span class="dt">columns</span><span class="op">:</span> [<span class="st">"Tool"</span><span class="op">,</span> <span class="st">"Section"</span><span class="op">,</span> <span class="st">"Category"</span><span class="op">,</span> <span class="st">"License"</span><span class="op">,</span> <span class="st">"Platform"</span><span class="op">,</span> <span class="st">"Strength"</span><span class="op">,</span> <span class="st">"Limitation"</span><span class="op">,</span> <span class="st">"Note"</span>]<span class="op">,</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {</span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Tool</span><span class="op">:</span> (value<span class="op">,</span> i<span class="op">,</span> data) <span class="kw">=&gt;</span> data[i]<span class="op">.</span><span class="at">URL</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;a href=</span><span class="sc">${</span>data[i]<span class="op">.</span><span class="at">URL</span><span class="sc">}</span><span class="vs">&gt;</span><span class="sc">${</span>value<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span> <span class="op">:</span> value<span class="op">,</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Note</span><span class="op">:</span> (value) <span class="kw">=&gt;</span> <span class="fu">noteHtml</span>(value <span class="op">||</span> <span class="st">""</span>)</span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<section id="retired-quiet-or-archived" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="retired-quiet-or-archived"><span class="header-section-number">B.1</span> Retired, quiet, or archived</h2>
+<p>Not in the table above.</p>
 <ul>
 <li><a href="https://github.com/huggingface/text-generation-inference">Hugging Face TGI</a> is archived. Last push 21 Mar 2026. Apache-2.0. Chapter 3 still names it.</li>
 <li><a href="https://github.com/nomic-ai/gpt4all">GPT4All</a> is not archived, and the last push is 27 May 2025. MIT. The glossary mentions it as a GGUF runner.</li>
@@ -1778,8 +678,8 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://github.com/Aider-AI/aider">Aider</a> is not archived. Apache-2.0. Last push 22 May 2026, so it is not listed as a current production harness. Chapter 4 still names it. Claude Squad’s README still lists it as a local agent you can launch.</li>
 </ul>
 </section>
-<section id="named-in-the-book-not-given-a-row" class="level2" data-number="B.13">
-<h2 data-number="B.13" class="anchored" data-anchor-id="named-in-the-book-not-given-a-row"><span class="header-section-number">B.13</span> Named in the book, not given a row</h2>
+<section id="named-in-the-book-not-given-a-row" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="named-in-the-book-not-given-a-row"><span class="header-section-number">B.2</span> Named in the book, not given a row</h2>
 <p>License or current repository was not confirmed, or the entry is not an agentic-engineering tool.</p>
 <ul>
 <li>Sandboxes named in chapter 4 or the digests, without a license file read this pass: Modal, <a href="https://www.kernel.sh/">Kernel</a>, <a href="https://docs.capsem.org/getting-started/intro/">Capsem</a>.</li>
@@ -1797,6 +697,17 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRvb2xzID0gRmlsZUF0dGFjaG1lbnQoXCJhaS10b29scy5jc3ZcIikuY3N2KHt0eXBlZDogZmFsc2V9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiY2F0ZWdvcmllcyA9IFtcIkFsbFwiXS5jb25jYXQoWy4uLm5ldyBTZXQodG9vbHMubWFwKChkKSA9PiBkLkNhdGVnb3J5KSldLnNvcnQoKGEsIGIpID0+IGEubG9jYWxlQ29tcGFyZShiKSkpXG5saWNlbnNlcyA9IFtcIkFsbFwiXS5jb25jYXQoWy4uLm5ldyBTZXQodG9vbHMubWFwKChkKSA9PiBkLkxpY2Vuc2UpKV0uc29ydCgoYSwgYikgPT4gYS5sb2NhbGVDb21wYXJlKGIpKSlcbnBsYXRmb3JtcyA9IFtcIkFsbFwiXS5jb25jYXQoWy4uLm5ldyBTZXQodG9vbHMuZmxhdE1hcCgoZCkgPT4gZC5QbGF0Zm9ybS5zcGxpdChcIixcIikubWFwKChzKSA9PiBzLnRyaW0oKSkuZmlsdGVyKEJvb2xlYW4pKSldLnNvcnQoKGEsIGIpID0+IGEubG9jYWxlQ29tcGFyZShiKSkpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgZmlsdGVycyA9IElucHV0cy5mb3JtKHtcbiAgcXVlcnk6IElucHV0cy50ZXh0KHtsYWJlbDogXCJTZWFyY2hcIiwgcGxhY2Vob2xkZXI6IFwiTmFtZSwgbm90ZSwgc3RyZW5ndGgsIGxpbWl0YXRpb25cIn0pLFxuICBjYXRlZ29yeTogSW5wdXRzLnNlbGVjdChjYXRlZ29yaWVzLCB7bGFiZWw6IFwiQ2F0ZWdvcnlcIiwgdmFsdWU6IFwiQWxsXCJ9KSxcbiAgbGljZW5zZTogSW5wdXRzLnNlbGVjdChsaWNlbnNlcywge2xhYmVsOiBcIkxpY2Vuc2VcIiwgdmFsdWU6IFwiQWxsXCJ9KSxcbiAgcGxhdGZvcm06IElucHV0cy5zZWxlY3QocGxhdGZvcm1zLCB7bGFiZWw6IFwiUGxhdGZvcm1cIiwgdmFsdWU6IFwiQWxsXCJ9KVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpbHRlcmVkID0gdG9vbHMuZmlsdGVyKChkKSA9PiB7XG4gIGNvbnN0IHF1ZXJ5ID0gKGZpbHRlcnMucXVlcnkgfHwgXCJcIikudHJpbSgpLnRvTG93ZXJDYXNlKCk7XG4gIGlmIChmaWx0ZXJzLmNhdGVnb3J5ICE9PSBcIkFsbFwiICYmIGQuQ2F0ZWdvcnkgIT09IGZpbHRlcnMuY2F0ZWdvcnkpIHJldHVybiBmYWxzZTtcbiAgaWYgKGZpbHRlcnMubGljZW5zZSAhPT0gXCJBbGxcIiAmJiBkLkxpY2Vuc2UgIT09IGZpbHRlcnMubGljZW5zZSkgcmV0dXJuIGZhbHNlO1xuICBpZiAoZmlsdGVycy5wbGF0Zm9ybSAhPT0gXCJBbGxcIikge1xuICAgIGNvbnN0IHBhcnRzID0gZC5QbGF0Zm9ybS5zcGxpdChcIixcIikubWFwKChzKSA9PiBzLnRyaW0oKSk7XG4gICAgaWYgKCFwYXJ0cy5pbmNsdWRlcyhmaWx0ZXJzLnBsYXRmb3JtKSkgcmV0dXJuIGZhbHNlO1xuICB9XG4gIGlmICghcXVlcnkpIHJldHVybiB0cnVlO1xuICBjb25zdCBibG9iID0gW2QuVG9vbCwgZC5TZWN0aW9uLCBkLkNhdGVnb3J5LCBkLkxpY2Vuc2UsIGQuUGxhdGZvcm0sIGQuU3RyZW5ndGgsIGQuTGltaXRhdGlvbiwgZC5Ob3RlXS5qb2luKFwiXFxuXCIpLnRvTG93ZXJDYXNlKCk7XG4gIHJldHVybiBibG9iLmluY2x1ZGVzKHF1ZXJ5KTtcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxwPjxzdHJvbmc+JHtmaWx0ZXJlZC5sZW5ndGh9PC9zdHJvbmc+IG9mICR7dG9vbHMubGVuZ3RofSB0b29sczwvcD5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmdW5jdGlvbiBub3RlSHRtbCh0ZXh0KSB7XG4gIGNvbnN0IHJlID0gL1xcWyhbXlxcXV0rKVxcXVxcKChodHRwcz86XFwvXFwvW14pXFxzXSspXFwpL2c7XG4gIGNvbnN0IG91dCA9IFtdO1xuICBsZXQgbGFzdCA9IDA7XG4gIGxldCBtYXRjaDtcbiAgd2hpbGUgKChtYXRjaCA9IHJlLmV4ZWModGV4dCkpICE9PSBudWxsKSB7XG4gICAgaWYgKG1hdGNoLmluZGV4ID4gbGFzdCkgb3V0LnB1c2godGV4dC5zbGljZShsYXN0LCBtYXRjaC5pbmRleCkpO1xuICAgIG91dC5wdXNoKGh0bWxgPGEgaHJlZj0ke21hdGNoWzJdfT4ke21hdGNoWzFdfTwvYT5gKTtcbiAgICBsYXN0ID0gbWF0Y2guaW5kZXggKyBtYXRjaFswXS5sZW5ndGg7XG4gIH1cbiAgaWYgKGxhc3QgPCB0ZXh0Lmxlbmd0aCkgb3V0LnB1c2godGV4dC5zbGljZShsYXN0KSk7XG4gIHJldHVybiBodG1sYDxzcGFuPiR7b3V0fTwvc3Bhbj5gO1xufVxuXG5JbnB1dHMudGFibGUoZmlsdGVyZWQsIHtcbiAgaGVpZ2h0OiBcIjcwdmhcIixcbiAgc29ydDogXCJUb29sXCIsXG4gIHJldmVyc2U6IGZhbHNlLFxuICBsYXlvdXQ6IFwiYXV0b1wiLFxuICBjb2x1bW5zOiBbXCJUb29sXCIsIFwiU2VjdGlvblwiLCBcIkNhdGVnb3J5XCIsIFwiTGljZW5zZVwiLCBcIlBsYXRmb3JtXCIsIFwiU3RyZW5ndGhcIiwgXCJMaW1pdGF0aW9uXCIsIFwiTm90ZVwiXSxcbiAgZm9ybWF0OiB7XG4gICAgVG9vbDogKHZhbHVlLCBpLCBkYXRhKSA9PiBkYXRhW2ldLlVSTCA/IGh0bWxgPGEgaHJlZj0ke2RhdGFbaV0uVVJMfT4ke3ZhbHVlfTwvYT5gIDogdmFsdWUsXG4gICAgTm90ZTogKHZhbHVlKSA9PiBub3RlSHRtbCh2YWx1ZSB8fCBcIlwiKVxuICB9XG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdmaWx0ZXJzJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../appendices";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -2338,5 +1249,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/appendices/ai-tools.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/davidgeeraerts/AI/edit/main/appendices/ai-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/davidgeeraerts/AI/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -1,0 +1,153 @@
+---
+title: "AI Tools"
+page-layout: full
+date: last-modified
+date-format: iso
+---
+
+Living catalog of agentic-engineering tools. The [glossary](glossary.qmd) defines concepts. This page names the programs: what they are licensed as, where they run, and one factual strength and limitation each.
+
+**Last checked: Nov 2026** (repository metadata, LICENSE files, and the official pages linked below, read 25 Nov 2026).
+
+A row is here when the book, an open chapter or glossary pull request, a GitHub issue on this repo, or a current production project names it, and a primary source states the license and platform. Issues are not closed by this page. License is the SPDX identifier, `Proprietary` when the product is closed and publishes no source license, or `Not stated` when the repo or site does not say. Platform uses Desktop, Mobile, and SaaS, plus CLI or Self-hosted when that is the accurate form. Empty cells are not guessed.
+
+[DHH](https://x.com/dhh) tags are only for tools he says he uses, or that [Omarchy](https://github.com/omacom/omarchy) ships. `basecamp/omarchy` redirects to `omacom/omarchy`. The manual cited below is `manual/17-ai.md` on the `quattro` branch. X posts cited here are his. Full-archive search was not available on this pass; the posts were read from his timeline and from the pages linked in the Note column.
+
+The rows live in [`ai-tools.csv`](ai-tools.csv). On the HTML site, click a column heading to sort. Search matches every column. Category and License match the whole cell. Platform matches one listed value, so Desktop also matches `Desktop, CLI`. PDF and EPUB, when those formats are turned on, print the same rows as static tables.
+
+A few groups need a sentence of context:
+
+- Agentic development environments run coding agents in parallel. They do not ship a model.
+- Omarchy launchers with no public LICENSE file are terminal commands from the [Omarchy manual](https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md). License stays `Not stated`.
+- Harness² and dsh-superagent are not stable releases. DeepSeek Harness's newest tags are prerelease.
+- MCP rows are programs. The protocol itself is not a row.
+- The terminal tools are how DHH watches agents. The model rows are weights he says he runs, not harnesses.
+- Desktop chat apps are the Omarchy Install, AI menu. Claude, Hermes, Herdr, Amp, T3 Code, and OpenClaw are already rows above.
+
+<style>
+form.oi-3a86ea-table td {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  vertical-align: top;
+}
+form.oi-3a86ea-table thead th {
+  background: var(--bs-body-bg, #fff);
+  cursor: pointer;
+  white-space: nowrap;
+}
+form.oi-3a86ea-table tr > :first-child {
+  display: none;
+  width: 0;
+  padding: 0;
+  border: 0;
+}
+</style>
+
+::: {.content-visible when-format="html"}
+
+```{ojs}
+//| echo: false
+tools = FileAttachment("ai-tools.csv").csv({typed: false})
+```
+
+```{ojs}
+//| echo: false
+categories = ["All"].concat([...new Set(tools.map((d) => d.Category))].sort((a, b) => a.localeCompare(b)))
+licenses = ["All"].concat([...new Set(tools.map((d) => d.License))].sort((a, b) => a.localeCompare(b)))
+platforms = ["All"].concat([...new Set(tools.flatMap((d) => d.Platform.split(",").map((s) => s.trim()).filter(Boolean)))].sort((a, b) => a.localeCompare(b)))
+```
+
+```{ojs}
+//| echo: false
+viewof filters = Inputs.form({
+  query: Inputs.text({label: "Search", placeholder: "Name, note, strength, limitation"}),
+  category: Inputs.select(categories, {label: "Category", value: "All"}),
+  license: Inputs.select(licenses, {label: "License", value: "All"}),
+  platform: Inputs.select(platforms, {label: "Platform", value: "All"})
+})
+```
+
+```{ojs}
+//| echo: false
+filtered = tools.filter((d) => {
+  const query = (filters.query || "").trim().toLowerCase();
+  if (filters.category !== "All" && d.Category !== filters.category) return false;
+  if (filters.license !== "All" && d.License !== filters.license) return false;
+  if (filters.platform !== "All") {
+    const parts = d.Platform.split(",").map((s) => s.trim());
+    if (!parts.includes(filters.platform)) return false;
+  }
+  if (!query) return true;
+  const blob = [d.Tool, d.Section, d.Category, d.License, d.Platform, d.Strength, d.Limitation, d.Note].join("\n").toLowerCase();
+  return blob.includes(query);
+})
+```
+
+```{ojs}
+//| echo: false
+html`<p><strong>${filtered.length}</strong> of ${tools.length} tools</p>`
+```
+
+```{ojs}
+//| echo: false
+function noteHtml(text) {
+  const re = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  const out = [];
+  let last = 0;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > last) out.push(text.slice(last, match.index));
+    out.push(html`<a href=${match[2]}>${match[1]}</a>`);
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return html`<span>${out}</span>`;
+}
+
+Inputs.table(filtered, {
+  height: "70vh",
+  sort: "Tool",
+  reverse: false,
+  layout: "auto",
+  columns: ["Tool", "Section", "Category", "License", "Platform", "Strength", "Limitation", "Note"],
+  format: {
+    Tool: (value, i, data) => data[i].URL ? html`<a href=${data[i].URL}>${value}</a>` : value,
+    Note: (value) => noteHtml(value || "")
+  }
+})
+```
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+Same catalog, as static tables.
+
+{{< include /appendices/_ai-tools-static.md >}}
+
+:::
+
+## Retired, quiet, or archived
+
+Not in the table above.
+
+- [Hugging Face TGI](https://github.com/huggingface/text-generation-inference) is archived. Last push 21 Mar 2026. Apache-2.0. Chapter 3 still names it.
+- [GPT4All](https://github.com/nomic-ai/gpt4all) is not archived, and the last push is 27 May 2025. MIT. The glossary mentions it as a GGUF runner.
+- [AutoGen](https://github.com/microsoft/autogen) is archived. GitHub reports CC-BY-4.0. No successor repo was found at `microsoft/agent-framework`.
+- [Daytona](https://github.com/daytonaio/daytona) is archived. Last push 24 Jul 2026. Chapter 4 names it as a sandbox. The product site in the repo description was not re-read.
+- [Aider](https://github.com/Aider-AI/aider) is not archived. Apache-2.0. Last push 22 May 2026, so it is not listed as a current production harness. Chapter 4 still names it. Claude Squad's README still lists it as a local agent you can launch.
+
+## Named in the book, not given a row
+
+License or current repository was not confirmed, or the entry is not an agentic-engineering tool.
+
+- Sandboxes named in chapter 4 or the digests, without a license file read this pass: Modal, [Kernel](https://www.kernel.sh/), [Capsem](https://docs.capsem.org/getting-started/intro/).
+- Chapter 3 links `microsoft/onnxruntime-genai`, and that repository returned 404, so ONNX Runtime GenAI has no row. `ggml-org/llamafile` also returned 404; it is not named in the chapters read here.
+- November digest plugins not re-checked: HERMES WebUI and switchyard-local-first-routing.
+- Issue #13 links [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses), a CC-BY-SA-4.0 ranked list of 187 harnesses, rescored weekly (last push 22 Nov 2026). This page does not copy those 187 rows. Each license was not re-checked.
+- Issue #10 links the YouTube channel [DevLogic-3.14](https://www.youtube.com/@DevLogic-3.14). It names no product.
+- Issue #21 links a Reddit thread about YouTubers for agent workflows. The issue body names no product, and the thread was not fetched.
+- Issue #5 is a list of people on X, not tools. Issue #15 is books. Issue #8 is videos. Issue #11 is label names.
+- Chapter 2 model vendors, image and video models, and chapter 6 utilities (Excalidraw, Tiktokenizer) are outside this catalog.
+- Shutdown stories for Roo Code, Continue, and Gas Town were not re-read from a primary source, so they are not listed as retired.

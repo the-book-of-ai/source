@@ -33,3 +33,12 @@ A concise description of the talk’s argument.
 ## Relevance to the book
 
 This source supports the arguments in Chapter 04 and Chapter 05.
+
+## Transcript
+
+The full transcript is
+`sources/youtube/videos/transcripts/transcript_dQw4w9WgXcQ.md`.
+Cite ranges from the `[mm:ss]` prefixes in that file. The fallback chain
+and the file's frontmatter (`title`, `channel`, `channel_id`, `published`,
+`url`, `language`, `caption_source`, `method`) are in
+`.agents/skills/youtube-source/SKILL.md`.

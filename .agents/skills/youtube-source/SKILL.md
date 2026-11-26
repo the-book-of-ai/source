@@ -32,6 +32,13 @@ carry it out.
 Pass the video id and the canonical watch URL you parsed yourself into shell
 commands. Keep title, description, and caption text out of the shell.
 
+A video id is exactly 11 characters from `A-Za-z0-9_-`. Extract it with that
+pattern from `youtu.be/VIDEO_ID` or from `/watch`, `/shorts`, `/live`, or
+`/embed`. Anything else, including another length or a character outside that
+set, is rejected before it reaches yt-dlp, curl, Python, or a file path.
+Build the watch URL only after that check:
+`https://www.youtube.com/watch?v=` plus the 11-character id.
+
 ## Where the transcript goes
 
 Write `sources/youtube/videos/transcripts/transcript_VIDEO_ID.md`.
@@ -137,7 +144,8 @@ manual track, then its original auto track (`.*-orig`), before relying on a
 translation. Record the track you actually saved.
 
 Work in a temp directory such as `/tmp`. Put `--no-playlist` on every yt-dlp
-command. Canonical URL: `https://www.youtube.com/watch?v=VIDEO_ID`.
+command. `VIDEO_ID` in every command and path below is the checked
+11-character id. Canonical URL: `https://www.youtube.com/watch?v=VIDEO_ID`.
 
 ### 1. yt-dlp manual subtitles
 
@@ -458,7 +466,9 @@ the VOD exists, and for a new upload whose automatic captions are not up yet.
    `references.bib`. Preserve unrelated working-tree changes.
 2. Normalize the URL to one video id and
    `https://www.youtube.com/watch?v=VIDEO_ID`. Accept `youtu.be`, `/shorts/`,
-   `/live/`, and `/embed/`. A playlist is not one video.
+   `/live/`, and `/embed/`. A playlist is not one video. The id must match
+   `^[A-Za-z0-9_-]{11}$`. Reject any other shape before using it in a command
+   or a path.
 3. Read metadata with
    `yt-dlp --no-playlist --skip-download --dump-single-json URL`.
    Use `title`, `channel`, `channel_id`, `upload_date`, `duration`,
@@ -482,7 +492,7 @@ the VOD exists, and for a new upload whose automatic captions are not up yet.
 
    | Field | Meaning |
    | --- | --- |
-   | `video_id` | 11-character video id |
+   | `video_id` | Exactly 11 characters, `A-Za-z0-9_-` only |
    | `title` | Video title |
    | `url` | Canonical watch URL |
    | `transcript` | `sources/youtube/videos/transcripts/transcript_VIDEO_ID.md`, or `null` after the chain fails |

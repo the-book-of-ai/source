@@ -137,8 +137,9 @@ Timestamps:
 - A 403, an empty caption list, or "subtitles were discarded because a PO
   token was not provided" fails that attempt. Switch player client or pass
   cookies before leaving the yt-dlp steps.
-- Datacenter IPs, including GitHub Actions runners, are often blocked. Use a
-  proxy or a residential IP on the later attempts.
+- Datacenter IPs, including GitHub Actions runners, are often blocked. The
+  later anonymous attempts use the maintainer's approved proxy when `YT_PROXY`
+  is set. Leave the proxy unused when it is unset.
 - When batching, pause about a second after a success before the next video.
 - Hosted Whisper often rejects files over about 25 MB. Split the audio, keep
   each chunk's start offset, and stitch the timestamps.
@@ -237,18 +238,22 @@ and continues to step 4. The proxied form of this call is in step 4.
 
 ### 4. Cookies, another player client, or a proxy
 
-Retry yt-dlp when the first calls are blocked. Change one thing, back off,
-then add the next: browser cookies, then another player client, then a proxy
-or residential IP. Combine them when each one alone still fails. Player
-clients to try, one at a time: `tv`, `web_safari`, `android`, `ios`, `mweb`.
+Retry yt-dlp when the first calls are blocked. Change one thing at a time:
+browser cookies on this machine's own network, then another player client,
+then an approved proxy with no cookies. Player clients to try, one at a time:
+`tv`, `web_safari`, `android`, `ios`, `mweb`.
 
-Cookies from a local browser. The browser is `firefox`, `chrome`, `chromium`,
-`edge`, `brave`, or `safari`:
+Browser cookies and a proxy stay in separate commands. `--cookies-from-browser`
+reads the maintainer's Google session. That session goes out only over this
+machine's own network. `--proxy ""` clears a proxy set in a yt-dlp config
+file. The browser is `firefox`, `chrome`, `chromium`, `edge`, `brave`, or
+`safari`:
 
 ```bash
 yt-dlp --no-playlist --skip-download --write-subs --write-auto-subs \
   --sub-langs "en-orig,en.*,en" --sub-format vtt \
   --cookies-from-browser firefox \
+  --proxy "" \
   --retries 5 --retry-sleep exp=2:60 \
   -o "/tmp/yt-%(id)s" \
   "https://www.youtube.com/watch?v=VIDEO_ID"
@@ -265,30 +270,32 @@ yt-dlp --no-playlist --skip-download --write-subs --write-auto-subs \
   "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-Proxy or residential IP. A rotating residential proxy lasts longer than one
-datacenter address. `--proxy ""` clears a proxy. Pass the same proxy into
-youtube-transcript-api.
+Approved proxy, with no browser cookies. Use this only when the maintainer
+has already set `YT_PROXY` to the proxy URL, including a residential proxy
+they chose for datacenter IP blocks. Skip this attempt when `YT_PROXY` is
+unset. Do not search for a proxy provider, sign up for one, or invent a host.
+Leave the URL in the environment. Do not paste the user, password, or host
+into the command, and do not echo `YT_PROXY`.
 
 ```bash
 yt-dlp --no-playlist --skip-download --write-subs --write-auto-subs \
   --sub-langs "en-orig,en.*,en" --sub-format vtt \
   --extractor-args "youtube:player_client=web_safari" \
-  --cookies-from-browser firefox \
-  --proxy "http://USER:PASS@HOST:PORT" \
+  --proxy "$YT_PROXY" \
   --retries 5 --retry-sleep exp=2:60 \
   -o "/tmp/yt-%(id)s" \
   "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
 ```python
+import os
+
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.proxies import GenericProxyConfig
 
+proxy = os.environ["YT_PROXY"]
 api = YouTubeTranscriptApi(
-    proxy_config=GenericProxyConfig(
-        http_url="http://user:pass@HOST:PORT",
-        https_url="https://user:pass@HOST:PORT",
-    )
+    proxy_config=GenericProxyConfig(http_url=proxy, https_url=proxy)
 )
 fetched = api.fetch("VIDEO_ID", languages=["en", "en-US", "en-GB"])
 ```
@@ -385,9 +392,12 @@ when the POST returns none. `method` is `timedtext`. `kind` absent is
 ### 6. Third-party transcript sites or APIs
 
 Try a site or API that returns a transcript for the watch URL or the video
-id. Examples include Tactiq, YouTubeToTranscript, Kome, and DownSub. Use an
-API when a key is already in the environment. A login wall, CAPTCHA, or empty
-body fails that site. Try one more site, then continue.
+id. Examples include Tactiq, YouTubeToTranscript, Kome, and DownSub. A public
+page that needs no key is enough. Call an API only when that service's own
+key is already set, and send the key only to the host that issued it.
+`OPENAI_API_KEY` stays on `api.openai.com`. A login wall, a CAPTCHA, an empty
+body, or a missing key for that host fails the site. Try one more public
+site, then continue.
 
 `method` is the site or API name. `caption_source` is `other`, or `manual`,
 `auto`, or `translated` when the site names the track. Clean the text the
@@ -464,7 +474,8 @@ still count. `caption_source` is `whisper`. `method` is `faster-whisper` or
 `whisper.cpp`. `language` is the language the model detected, or the language
 you passed in.
 
-When no local Whisper is installed, send the audio to a hosted Whisper API:
+When no local Whisper is installed and `OPENAI_API_KEY` is set, send the
+audio to OpenAI with that key:
 
 ```bash
 curl -sS https://api.openai.com/v1/audio/transcriptions \
@@ -475,10 +486,14 @@ curl -sS https://api.openai.com/v1/audio/transcriptions \
   -F "file=@${AUDIO}"
 ```
 
-Use each segment's `start` and `text`. `method` is `openai-whisper`. A
-compatible hosted endpoint is fine when that is the key on hand. Split a file
-the API rejects for size, then add each chunk's offset to its timestamps.
-Delete `$AUDIO` and `/tmp/yt-VIDEO_ID.*` after the markdown is written.
+Use each segment's `start` and `text`. `method` is `openai-whisper`. This
+curl runs only when `OPENAI_API_KEY` is set, and that key goes only to
+`https://api.openai.com/`. Another host is used only when the maintainer has
+set both `WHISPER_API_URL` and `WHISPER_API_KEY` for that host. A key never
+goes to a host that did not issue it, and the agent does not pick a host.
+Split a file the API rejects for size, then add each chunk's offset to its
+timestamps. Delete `$AUDIO` and `/tmp/yt-VIDEO_ID.*` after the markdown is
+written.
 
 ### 8. Mark it missing and retry later
 

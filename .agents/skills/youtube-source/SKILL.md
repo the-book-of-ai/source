@@ -156,6 +156,10 @@ Work in a temp directory such as `/tmp`. Put `--no-playlist` on every yt-dlp
 command. `VIDEO_ID` in every command and path below is the checked
 11-character id. Canonical URL: `https://www.youtube.com/watch?v=VIDEO_ID`.
 
+Flag notes for yt-dlp 2026.11.23, the rolling-caption cleaner in
+`scripts/vtt_to_transcript.py`, and the blocked proof of concept for
+`BSzhrZOp2x8` are in `sources/youtube/yt-dlp-transcripts.md`.
+
 ### 1. yt-dlp manual subtitles
 
 ```bash

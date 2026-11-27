@@ -306,11 +306,11 @@ previous cue that is a prefix of the current one, appends the new words, and
 stamps them with the cue that introduced them. Cues that do not overlap are
 kept whole, so a repeated word in a manual track stays. `--manual` skips the
 collapse entirely. Literal WebVTT tags are removed before HTML entities are
-decoded, and `<`, `>`, and `&` are escaped again so a caption cannot become
-raw HTML. It then groups the result into
-paragraphs of about 20–45 seconds, breaking at a sentence boundary once the
-paragraph is at least 20 seconds, or at 45 seconds if the sentence is still
-open. A cue that starts with punctuation stays attached to the previous
+decoded, and `<`, `>`, `&`, backslashes, and square brackets are escaped
+so a caption cannot become raw HTML or a Markdown link. It then groups the
+result into paragraphs of about 20–45 seconds, breaking at a sentence
+boundary once the paragraph is at least 20 seconds, or at 45 seconds if the
+sentence is still open. A cue that starts with punctuation stays attached to the previous
 sentence. That happens in this video's manual track: one cue is
 `decoding step, which is the bottleneck` and the next cue starts with
 `. You might`.

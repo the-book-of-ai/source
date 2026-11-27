@@ -42,8 +42,10 @@ def clean_cue(text: str) -> str:
     so they are removed before HTML entities are decoded. A spoken comparison
     is stored as ``&lt;`` and must survive. Decoding first and then deleting
     everything between angle brackets would turn ``a &lt; b and c &gt; d``
-    into ``a d``. After decoding, ``<``, ``>``, and ``&`` are escaped again so
-    a caption cannot become raw HTML in the markdown.
+    into ``a d``. After decoding, ``<``, ``>``, and ``&`` are escaped so a
+    caption cannot become raw HTML. Backslashes and square brackets are
+    escaped too, so ``[label](https://example)`` and ``![alt](url)`` stay
+    text instead of a Markdown link or image.
     """
     text = TAG_RE.sub("", text)
     previous = None
@@ -52,7 +54,12 @@ def clean_cue(text: str) -> str:
         text = html.unescape(text)
     text = text.replace("\u00a0", " ")
     text = " ".join(text.split())
-    return html.escape(text, quote=False)
+    text = html.escape(text, quote=False)
+    return (
+        text.replace("\\", "\\\\")
+        .replace("[", "\\[")
+        .replace("]", "\\]")
+    )
 
 
 def parse_vtt(raw: str) -> list[tuple[float, float, str]]:

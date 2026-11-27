@@ -20,7 +20,7 @@
 | An encyclopedia | Yes |
 | A catalogue | Yes |
 | A digest | Yes |
-| The next incarnation of a digital "Anarchist Cookbook" | Yes |
+| The next incarnation of a digital ["Anarchist Cookbook"](https://grokipedia.com/page/The_Anarchist_Cookbook) | Yes |
 
 
 ## :construction: _This book is currently under heavy construction._ :construction:

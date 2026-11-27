@@ -36,8 +36,17 @@ def parse_timestamp(value: str) -> float:
 
 
 def clean_cue(text: str) -> str:
+    """Drop VTT markup, including tags hidden inside HTML entities.
+
+    Unescape until the text is stable, then strip tags. Stripping first would
+    leave ``&lt;img onerror=...&gt;`` in place, and the following unescape
+    would turn it into a raw tag in the markdown.
+    """
+    previous = None
+    while previous != text:
+        previous = text
+        text = html.unescape(text)
     text = TAG_RE.sub("", text)
-    text = html.unescape(text)
     text = text.replace("\u00a0", " ")
     return " ".join(text.split())
 

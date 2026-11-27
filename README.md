@@ -13,6 +13,7 @@
 | Is it...? | Answer |
 |---|---|
 | A book | Yes |
+| A portal | Yes |
 | A course | Yes |
 | A technical how-to | Yes |
 | A dictionary | Yes |

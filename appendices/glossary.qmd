@@ -1688,6 +1688,10 @@ Transformers have revolutionized AI by enabling efficient and scalable processin
 ### (VPS) Virtual Private Server
 > is a virtualized server instance running on shared physical hardware in a data center, sold as a standalone machine with dedicated resources (CPU, RAM, storage, and usually a public IP). Unlike shared hosting, a VPS gives the user root access and full control over the operating system and installed software.
 
+### (VTT) Web Video Text Tracks
+> is a plain-text, UTF-8 encoded W3C standard used to display timed text—such as subtitles, closed captions, chapter markers, and descriptions—alongside HTML5 video and audio players. The VTT format is widely used in web applications and media players to provide accessibility features and enhance the viewing experience.
+
+
 ---
 
 ## X

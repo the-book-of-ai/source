@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -36,6 +37,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_CACHE = Path.home() / ".cache" / "ai-book-youtube-catalog"
 CHANNEL_QMD = ROOT / "chapters" / "_07.1-youtube-xml-feeds.qmd"
 CATALOG_PATH = ROOT / "sources" / "youtube" / "video-id.json"
 IBM_CHANNEL_ID = "UCKWaEZ-_VweaEx1j62do_vQ"
@@ -148,6 +150,53 @@ BOILERPLATE = re.compile(
 SHORTS_TITLE = re.compile(r"(?i)#shorts|\bshorts\b")
 
 
+def reject_symlink(path: Path) -> None:
+    if path.is_symlink():
+        raise SystemExit(f"refusing symlink in the youtube cache: {path}")
+
+
+def read_cache_text(path: Path) -> str:
+    reject_symlink(path)
+    flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(path, flags)
+    with os.fdopen(fd, "r", encoding="utf-8") as handle:
+        return handle.read()
+
+
+def write_cache_text(path: Path, text: str) -> None:
+    """Write a cache file without following a symlink planted at that path."""
+    reject_symlink(path)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(path, flags, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as handle:
+        handle.write(text)
+
+
+def prepare_cache(path: Path) -> Path:
+    """Create a private cache directory owned by the current user.
+
+    A predictable directory under shared /tmp can be created first by another
+    local user. Reusing that directory would follow their symlinks or trust
+    their playlist files. Refuse a symlink and any directory this user does
+    not own.
+    """
+    path = path.expanduser()
+    if path.is_symlink():
+        raise SystemExit(f"refusing symlink cache dir: {path}")
+    path.mkdir(parents=True, mode=0o700, exist_ok=True)
+    if path.is_symlink() or not path.is_dir():
+        raise SystemExit(f"cache path is not a directory: {path}")
+    info = path.stat()
+    if info.st_uid != os.getuid():
+        raise SystemExit(f"cache dir is not owned by the current user: {path}")
+    os.chmod(path, 0o700)
+    return path
+
+
 def slugify(name: str) -> str:
     return re.sub(r"[^A-Za-z0-9]+", "-", name).strip("-").lower()
 
@@ -229,8 +278,10 @@ def json_string_at(html: str, marker: str) -> str | None:
 
 def fetch_description(video_id: str, cache: Path, pause: float) -> str | None:
     dest = cache / f"{video_id}.txt"
+    if dest.is_symlink():
+        raise SystemExit(f"refusing symlink in the youtube cache: {dest}")
     if dest.exists():
-        text = dest.read_text()
+        text = read_cache_text(dest)
         return None if text == "" else text
     url = f"https://www.youtube.com/watch?v={video_id}"
     last_error = "no description in watch page"
@@ -246,15 +297,15 @@ def fetch_description(video_id: str, cache: Path, pause: float) -> str | None:
             if text is None:
                 text = json_string_at(html, '"shortDescription":"')
             if text is not None:
-                dest.write_text(text)
+                write_cache_text(dest, text)
                 time.sleep(pause)
                 return text
             last_error = "watch page had no description"
         except Exception as exc:  # noqa: BLE001 - network errors are reported, not fatal
             last_error = str(exc)
         time.sleep(min(30, 2**attempt))
-    (cache / f"{video_id}.err").write_text(last_error)
-    dest.write_text("")
+    write_cache_text(cache / f"{video_id}.err", last_error)
+    write_cache_text(dest, "")
     return None
 
 
@@ -276,7 +327,7 @@ def fetch_length_seconds(video_id: str) -> int | None:
 
 
 def load_playlist(path: Path) -> list[dict]:
-    data = json.loads(path.read_text())
+    data = json.loads(read_cache_text(path))
     entries = []
     for entry in data.get("entries") or []:
         if not entry:
@@ -308,6 +359,8 @@ def load_playlist(path: Path) -> list[dict]:
 
 
 def fetch_tab(url: str, dest: Path, pause: float) -> None:
+    if dest.is_symlink():
+        raise SystemExit(f"refusing symlink in the youtube cache: {dest}")
     if dest.exists() and dest.stat().st_size > 20:
         return
     binary = yt_dlp_bin()
@@ -336,13 +389,13 @@ def fetch_tab(url: str, dest: Path, pause: float) -> None:
         blob = (proc.stderr or "") + (proc.stdout or "")
         last = blob[-2000:]
         if proc.returncode == 0 and (proc.stdout or "").strip().startswith("{"):
-            dest.write_text(proc.stdout)
+            write_cache_text(dest, proc.stdout)
             return
         if re.search(r"does not have|no videos|This channel has no|playlist does not exist", blob, re.I):
-            dest.write_text(json.dumps({"entries": [], "note": "empty tab"}))
+            write_cache_text(dest, json.dumps({"entries": [], "note": "empty tab"}))
             return
         time.sleep(min(60, 2**attempt))
-    dest.write_text(json.dumps({"entries": [], "error": last}))
+    write_cache_text(dest, json.dumps({"entries": [], "error": last}))
 
 
 def catalog_dump(entries: list[dict]) -> str:
@@ -382,16 +435,14 @@ def self_check() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--cache-dir", type=Path, default=Path("/tmp/yt-catalog"))
+    parser.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE)
     parser.add_argument("--pause", type=float, default=1.0, help="seconds between YouTube requests")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     self_check()
 
-    cache = args.cache_dir
-    cache.mkdir(parents=True, exist_ok=True)
-    desc_cache = cache / "descriptions"
-    desc_cache.mkdir(parents=True, exist_ok=True)
+    cache = prepare_cache(args.cache_dir)
+    desc_cache = prepare_cache(cache / "descriptions")
 
     channels = read_channels(CHANNEL_QMD)
     catalog = json.loads(CATALOG_PATH.read_text())
@@ -418,7 +469,7 @@ def main() -> None:
             if not dest.exists():
                 fetch_tab(url, dest, args.pause)
                 time.sleep(args.pause)
-            raw = json.loads(dest.read_text())
+            raw = json.loads(read_cache_text(dest))
             if raw.get("error"):
                 failures.append(f"{name} {tab}: {raw['error'][:180]}")
             parsed = load_playlist(dest)
@@ -561,7 +612,7 @@ def main() -> None:
         "failures": failures,
         "dry_run": args.dry_run,
     }
-    (cache / "report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False))
+    write_cache_text(cache / "report.json", json.dumps(report, indent=2, ensure_ascii=False))
     print(json.dumps({k: report[k] for k in ("catalog_before", "catalog_after", "added", "bytes")}, indent=2))
 
 

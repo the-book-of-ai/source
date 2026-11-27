@@ -24,9 +24,11 @@ New rows use the same keys, in the same order, with null transcript and summary.
 
 Each run refetches the Videos and Live tabs so later uploads and aired
 premieres show up. Pass --use-cache to reuse the last successful playlist
-download; a cached file that recorded an error is fetched again. If a tab or
-an IBM description cannot be fetched, the failures are printed, video-id.json
-is left unchanged, and the process exits nonzero.
+download; a cached file that recorded an error is fetched again. A saved IBM
+description is reused only when it is non-empty, so a failed fetch is retried
+on the next run. If a tab or an IBM description cannot be fetched, the
+failures are printed, video-id.json is left unchanged, and the process exits
+nonzero.
 """
 
 from __future__ import annotations
@@ -286,9 +288,12 @@ def fetch_description(video_id: str, cache: Path, pause: float) -> str | None:
     dest = cache / f"{video_id}.txt"
     if dest.is_symlink():
         raise SystemExit(f"refusing symlink in the youtube cache: {dest}")
+    # An empty file is a failed fetch, not a description. Retry it so a later
+    # run can recover after YouTube stops blocking the watch page.
     if dest.exists():
         text = read_cache_text(dest)
-        return None if text == "" else text
+        if text != "":
+            return text
     url = f"https://www.youtube.com/watch?v={video_id}"
     last_error = "no description in watch page"
     for attempt in range(4):

@@ -21,6 +21,12 @@ Every other channel keeps all of its non-Short videos and past live streams.
 
 Existing catalog rows are left as they are, including the sample row.
 New rows use the same keys, in the same order, with null transcript and summary.
+
+Each run refetches the Videos and Live tabs so later uploads and aired
+premieres show up. Pass --use-cache to reuse the last successful playlist
+download; a cached file that recorded an error is fetched again. If a tab or
+an IBM description cannot be fetched, the failures are printed, video-id.json
+is left unchanged, and the process exits nonzero.
 """
 
 from __future__ import annotations
@@ -358,11 +364,20 @@ def load_playlist(path: Path) -> list[dict]:
     return entries
 
 
+def playlist_cache_ok(path: Path) -> bool:
+    """True when a cached playlist file is a successful download, not an error."""
+    if path.is_symlink() or not path.is_file() or path.stat().st_size <= 20:
+        return False
+    try:
+        data = json.loads(read_cache_text(path))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return isinstance(data, dict) and "error" not in data
+
+
 def fetch_tab(url: str, dest: Path, pause: float) -> None:
     if dest.is_symlink():
         raise SystemExit(f"refusing symlink in the youtube cache: {dest}")
-    if dest.exists() and dest.stat().st_size > 20:
-        return
     binary = yt_dlp_bin()
     last = ""
     for attempt, client in enumerate(PLAYER_CLIENTS):
@@ -433,11 +448,16 @@ def self_check() -> None:
             raise SystemExit(f"classifier self-check failed for {title!r}: {got} != {expected}")
 
 
-def main() -> None:
+def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE)
     parser.add_argument("--pause", type=float, default=1.0, help="seconds between YouTube requests")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--use-cache",
+        action="store_true",
+        help="Reuse the last successful playlist download. The default refetches every Videos and Live tab. Cached errors are fetched again either way.",
+    )
     args = parser.parse_args()
     self_check()
 
@@ -466,7 +486,7 @@ def main() -> None:
         for tab in ("videos", "streams"):
             dest = cache / f"{slug}.{tab}.json"
             url = f"https://www.youtube.com/channel/{channel_id}/{tab}"
-            if not dest.exists():
+            if not (args.use_cache and playlist_cache_ok(dest)):
                 fetch_tab(url, dest, args.pause)
                 time.sleep(args.pause)
             raw = json.loads(read_cache_text(dest))
@@ -597,8 +617,6 @@ def main() -> None:
 
     text = catalog_dump(merged)
     json.loads(text)
-    if not args.dry_run:
-        CATALOG_PATH.write_text(text)
     report = {
         "catalog_before": len(catalog),
         "catalog_after": len(merged),
@@ -613,11 +631,23 @@ def main() -> None:
         "dry_run": args.dry_run,
     }
     write_cache_text(cache / "report.json", json.dumps(report, indent=2, ensure_ascii=False))
-    print(json.dumps({k: report[k] for k in ("catalog_before", "catalog_after", "added", "bytes")}, indent=2))
+    summary = {k: report[k] for k in ("catalog_before", "catalog_after", "added", "bytes", "failures")}
+    print(json.dumps(summary, indent=2))
+    if failures:
+        print(
+            f"sync incomplete: {len(failures)} failure(s); video-id.json was not changed",
+            file=sys.stderr,
+        )
+        for item in failures:
+            print(item, file=sys.stderr)
+        return 1
+    if not args.dry_run:
+        CATALOG_PATH.write_text(text)
+    return 0
 
 
 if __name__ == "__main__":
     try:
-        main()
+        sys.exit(main())
     except KeyboardInterrupt:
         sys.exit(130)

@@ -300,9 +300,14 @@ Read left to right, the new words are `memory`, `bandwidth`, `caps`,
 `decode`, `speed`, `here.` Naive concatenation prints "memory bandwidth"
 five times.
 
-`scripts/vtt_to_transcript.py` keeps the longest suffix of the previous cue
-that is a prefix of the current cue, appends only the new words, and stamps
-them with the cue that introduced them. It then groups the result into
+`scripts/vtt_to_transcript.py` collapses that window only when the next cue
+starts before the previous cue ends. It keeps the longest suffix of the
+previous cue that is a prefix of the current one, appends the new words, and
+stamps them with the cue that introduced them. Cues that do not overlap are
+kept whole, so a repeated word in a manual track stays. `--manual` skips the
+collapse entirely. Literal WebVTT tags are removed before HTML entities are
+decoded, and `<`, `>`, and `&` are escaped again so a caption cannot become
+raw HTML. It then groups the result into
 paragraphs of about 20–45 seconds, breaking at a sentence boundary once the
 paragraph is at least 20 seconds, or at 45 seconds if the sentence is still
 open. A cue that starts with punctuation stays attached to the previous

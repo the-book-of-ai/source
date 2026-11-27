@@ -36,24 +36,28 @@ def parse_timestamp(value: str) -> float:
 
 
 def clean_cue(text: str) -> str:
-    """Drop VTT markup, including tags hidden inside HTML entities.
+    """Drop literal WebVTT tags, then escape the cue for Markdown.
 
-    Unescape until the text is stable, then strip tags. Stripping first would
-    leave ``&lt;img onerror=...&gt;`` in place, and the following unescape
-    would turn it into a raw tag in the markdown.
+    Tags such as ``<c>`` and ``<00:00:01.000>`` are real markup in the file,
+    so they are removed before HTML entities are decoded. A spoken comparison
+    is stored as ``&lt;`` and must survive. Decoding first and then deleting
+    everything between angle brackets would turn ``a &lt; b and c &gt; d``
+    into ``a d``. After decoding, ``<``, ``>``, and ``&`` are escaped again so
+    a caption cannot become raw HTML in the markdown.
     """
+    text = TAG_RE.sub("", text)
     previous = None
     while previous != text:
         previous = text
         text = html.unescape(text)
-    text = TAG_RE.sub("", text)
     text = text.replace("\u00a0", " ")
-    return " ".join(text.split())
+    text = " ".join(text.split())
+    return html.escape(text, quote=False)
 
 
-def parse_vtt(raw: str) -> list[tuple[float, str]]:
-    """Return (start_seconds, cue_text) for every non-empty cue."""
-    cues: list[tuple[float, str]] = []
+def parse_vtt(raw: str) -> list[tuple[float, float, str]]:
+    """Return (start_seconds, end_seconds, cue_text) for every non-empty cue."""
+    cues: list[tuple[float, float, str]] = []
     lines = raw.replace("\r\n", "\n").replace("\r", "\n").split("\n")
     index = 0
     while index < len(lines):
@@ -61,7 +65,9 @@ def parse_vtt(raw: str) -> list[tuple[float, str]]:
         if "-->" not in line:
             index += 1
             continue
-        start = parse_timestamp(line.split("-->", 1)[0])
+        start_text, end_text = line.split("-->", 1)
+        start = parse_timestamp(start_text)
+        end = parse_timestamp(end_text)
         index += 1
         parts: list[str] = []
         while index < len(lines) and lines[index].strip():
@@ -69,7 +75,7 @@ def parse_vtt(raw: str) -> list[tuple[float, str]]:
             index += 1
         text = clean_cue(" ".join(parts))
         if text:
-            cues.append((start, text))
+            cues.append((start, end, text))
     return cues
 
 
@@ -82,18 +88,26 @@ def new_words(previous: list[str], current: list[str]) -> list[str]:
     return current
 
 
-def dedupe_cues(cues: list[tuple[float, str]]) -> list[tuple[float, str]]:
-    """Collapse rolling auto-caption windows. Keep the first time a word appears."""
+def dedupe_cues(cues: list[tuple[float, float, str]]) -> list[tuple[float, str]]:
+    """Collapse rolling auto-caption windows. Keep the first time a word appears.
+
+    Only cues that overlap in time are windows of the same line. A later cue
+    that merely starts with a word the previous cue ended on is new speech,
+    including a repetition, and stays intact.
+    """
     pieces: list[tuple[float, str]] = []
     previous: list[str] = []
-    for start, text in cues:
+    previous_end: float | None = None
+    for start, end, text in cues:
         words = text.split()
         if not words:
             continue
-        fresh = new_words(previous, words)
+        overlapping = previous_end is not None and start < previous_end
+        fresh = new_words(previous, words) if overlapping else words
         if fresh:
             pieces.append((start, " ".join(fresh)))
         previous = words
+        previous_end = end
     return pieces
 
 
@@ -150,9 +164,17 @@ def paragraphs(
     return grouped
 
 
-def render(raw: str, min_seconds: float = 20, max_seconds: float = 45) -> str:
+def render(
+    raw: str,
+    min_seconds: float = 20,
+    max_seconds: float = 45,
+    manual: bool = False,
+) -> str:
     cues = parse_vtt(raw)
-    pieces = dedupe_cues(cues)
+    if manual:
+        pieces = [(start, text) for start, _end, text in cues]
+    else:
+        pieces = dedupe_cues(cues)
     blocks = paragraphs(pieces, min_seconds=min_seconds, max_seconds=max_seconds)
     lines = [f"[{format_stamp(start)}] {text}" for start, text in blocks]
     return "\n\n".join(lines) + ("\n" if lines else "")
@@ -173,9 +195,21 @@ def main(argv: list[str] | None = None) -> int:
         default=45,
         help="start a new paragraph once a cue begins this far from the paragraph start",
     )
+    parser.add_argument(
+        "--manual",
+        action="store_true",
+        help="keep every cue; do not collapse overlapping automatic-caption windows",
+    )
     args = parser.parse_args(argv)
     raw = args.vtt.read_text(encoding="utf-8")
-    sys.stdout.write(render(raw, min_seconds=args.min_seconds, max_seconds=args.max_seconds))
+    sys.stdout.write(
+        render(
+            raw,
+            min_seconds=args.min_seconds,
+            max_seconds=args.max_seconds,
+            manual=args.manual,
+        )
+    )
     return 0
 
 

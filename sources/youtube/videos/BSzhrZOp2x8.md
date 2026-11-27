@@ -40,7 +40,7 @@ the video, and the closing speed claims about that company are hers.
 - **[08:38–09:30]** Prefill is compute-bound because the whole prompt is
   available at once. Decode is memory-bound because each new token needs
   another full pass over the weights.
-- **[10:49–13:34]** Batching, including continuous batching, raises arithmetic
+- **[10:49–14:00]** Batching, including continuous batching, raises arithmetic
   intensity by extending many responses with one weight stream. The KV cache
   grows with the batch and gives some of that gain back.
 - **[14:50–16:07]** Speculative decoding pays off only when the draft model is

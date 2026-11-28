@@ -142,5 +142,6 @@ prioritise independent writers, technical depth, open-model communities, and low
 - [Andrew Ng](https://www.andrewng.org/) - [DeepLearning.AI / Stanford](https://www.deeplearning.ai/)
 - [Christopher Olah](https://colah.github.io/) - [Anthropic](https://www.anthropic.com/)
 - [Ilya Sutskever](https://ssi.inc/) - [Safe Superintelligence (SSI)](https://ssi.inc/)
+- [Liang Wenfeng](https://grokipedia.com/page/Liang_Wenfeng) - [DeepSeek](https://deepseek.com/)
 
 

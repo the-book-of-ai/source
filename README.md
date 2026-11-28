@@ -6,21 +6,29 @@
 
 > See how deep the rabbit hole goes: a practical guide to agentic engineering and building your own stack for agentic systems.
 
+---
+
+> "GPU sovereignty is the new second amendment" ~DHH
+
+> "Not all benchmarks lie, but all liars benchmark"
+
+---
+
 ## Objective
 
-> Be a comprehensive, well curated (signal from noise), maintained manual for agentic engineering, and building a practical toolkit for local LLM sovereignty.
+> Be a well curated (signal from noise) comprehensive manual for agentic engineering, and building a practical toolkit for local LLM sovereignty.
 
-| Is it...? | Answer |
-|---|---|
-| A book | Yes |
-| A portal | Yes |
-| A course | Yes |
-| A technical how-to | Yes |
-| A dictionary | Yes |
-| An encyclopedia | Yes |
-| A catalogue | Yes |
-| A digest | Yes |
-| The next incarnation of a digital ["Anarchist Cookbook"](https://grokipedia.com/page/The_Anarchist_Cookbook) | Yes |
+| Is it...?                                                                                                    | Answer |
+|--------------------------------------------------------------------------------------------------------------|--------|
+| A book                                                                                                       | Yes    |
+| A portal                                                                                                     | Yes    |
+| A course                                                                                                     | Yes    |
+| A technical how-to                                                                                           | Yes    |
+| A dictionary                                                                                                 | Yes    |
+| An encyclopedia                                                                                              | Yes    |
+| A catalogue                                                                                                  | Yes    |
+| A digest                                                                                                     | Yes    |
+| The next incarnation of a digital ["Anarchist Cookbook"](https://grokipedia.com/page/The_Anarchist_Cookbook) | Yes    |
 
 
 ## :construction: _This book is currently under heavy construction._ :construction:
@@ -104,11 +112,6 @@ With Quarto installed, run `quarto render` from the repository root to build the
 - [Quarto website](https://quarto.org/) -- publishing and rendering engine for the book
 - [Mermaid](https://mermaid.js.org/) -- create diagrams and visualizations using text and code
 
-# Quotes
-
-> "Not all benchmarks lie, but all liars benchmark"
-
-> "GPU sovereignty is the new second amendment" ~DHH
 
 # History
 
